@@ -1,6 +1,6 @@
 name: sonarr_api
 description: Dart abstraction for Sonarr's public API (https://sonarr.tv)
-version: 0.0.1-pre.1
+version: 0.0.1-pre.2
 homepage: https://github.com/RoninComputer/dart-sonarr-api
 repository: https://github.com/RoninComputer/dart-sonarr-api
 issue_tracker: https://github.com/RoninComputer/dart-sonarr-api/issues
