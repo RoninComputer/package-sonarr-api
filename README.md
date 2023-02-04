@@ -7,6 +7,74 @@ Dart library package providing an abstraction for [Sonarr][website]'s public API
 
 This package is intended to supply a 1:1 mapping of the [public API documentation][swagger] and does not make assumptions on orchestration to execute different workflows.
 
+# Endpoints Requiring Implementation
+
+- ApiInfo
+- Authentication
+- StaticResource
+- Blocklist
+- Calendar
+- CalendarFeed
+- Command
+- CustomFilter
+- CustomFormat
+- Cutoff
+- DelayProfile
+- DiskSpace
+- DownloadClient
+- DownloadClientConfig
+- Episode
+- EpisodeFile
+- FileSystem
+- Health
+- History
+- HostConfig
+- ImportList
+- ImportListExclusion
+- Indexer
+- IndexerConfig
+- InitializeJs
+- Language
+- LanguageProfile
+- LanguageProfileSchema
+- Localization
+- Log
+- LogFile
+- ManualImport
+- MediaCover
+- MediaManagementConfig
+- Metadata
+- Missing
+- NamingConfig
+- Notification
+- Parse
+- Ping
+- QualityDefinition
+- QualityProfile
+- QualityProfileSchema
+- Queue
+- QueueAction
+- QueueDetails
+- QueueStatus
+- Release
+- ReleaseProfile
+- ReleasePush
+- RemotePathMapping
+- RenameEpisode
+- RootFolder
+- SeasonPass
+- Series
+- SeriesEditor
+- SeriesImport
+- SeriesLookup
+- System
+- Tag
+- TagDetails
+- Task
+- UiConfig
+- Update
+- UpdateLogFile
+
 # Preparing Sonarr
 
 To connect to your instance of Sonarr, you will need:
