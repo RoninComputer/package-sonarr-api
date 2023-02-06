@@ -38,8 +38,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - LanguageProfile
 - LanguageProfileSchema
 - Localization
-- Log
-- LogFile
 - ManualImport
 - MediaCover
 - MediaManagementConfig
@@ -73,7 +71,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - Task
 - UiConfig
 - Update
-- UpdateLogFile
 
 # Preparing Sonarr
 

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:sonarr_api/api.dart';
 import 'package:sonarr_api/models.dart';
+import 'package:sonarr_api/types.dart';
 
 part 'api.g.dart';
 
@@ -32,5 +33,36 @@ abstract class SonarrAPI {
   @POST('system/backup/restore/{id}')
   Future<void> restoreBackup({
     @Path('id') required int id,
+  });
+
+  /// Get a list of logs.
+  @GET('log')
+  Future<SonarrPagedResult<SonarrLog>> getLogs({
+    @Query('page') int? page,
+    @Query('pageSize') int? pageSize,
+    @Query('sortKey') String? sortKey,
+    @Query('sortDirection') SonarrSortDirection? sortDirection,
+  });
+
+  /// Get a list of log files.
+  @GET('log/file')
+  Future<List<SonarrLogFile>> getLogFiles();
+
+  /// Get a specific log file data.
+  @GET('log/file/{name}')
+  @DioResponseType(ResponseType.bytes)
+  Future<List<int>> getLogFileData({
+    @Path('name') required String name,
+  });
+
+  /// Get a list of update log files.
+  @GET('log/file/update')
+  Future<List<SonarrLogFile>> getUpdateLogFiles();
+
+  /// Get a specific update log file data.
+  @GET('log/file/update/{name}')
+  @DioResponseType(ResponseType.bytes)
+  Future<List<int>> getUpdateLogFileData({
+    @Path('name') required String name,
   });
 }
