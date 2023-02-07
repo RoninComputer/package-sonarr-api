@@ -65,4 +65,8 @@ abstract class SonarrAPI {
   Future<List<int>> getUpdateLogFileData({
     @Path('name') required String name,
   });
+
+  /// Get a list of Sonarr updates.
+  @GET('update')
+  Future<List<SonarrUpdate>> getUpdates();
 }
