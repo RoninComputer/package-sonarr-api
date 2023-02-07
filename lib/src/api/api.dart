@@ -19,6 +19,26 @@ abstract class SonarrAPI {
     return _SonarrAPI(dio);
   }
 
+  /// Get the media management configuration.
+  @GET('config/mediamanagement')
+  Future<SonarrMediaManagementConfig> getMediaManagementConfig();
+
+  /// Update the media management configuration.
+  @PUT('config/mediamanagement')
+  Future<SonarrMediaManagementConfig> updateMediaManagementConfig({
+    @Body() required SonarrMediaManagementConfig config,
+  });
+
+  /// Get the naming configuration.
+  @GET('config/naming')
+  Future<SonarrNamingConfig> getNamingConfig();
+
+  /// Update the naming configuration.
+  @PUT('config/naming')
+  Future<SonarrNamingConfig> updateNamingConfig({
+    @Body() required SonarrNamingConfig config,
+  });
+
   /// Get the UI configuration.
   @GET('config/ui')
   Future<SonarrUiConfig> getUiConfig();

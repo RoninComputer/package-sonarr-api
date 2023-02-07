@@ -19,6 +19,101 @@ class _SonarrAPI implements SonarrAPI {
   String? baseUrl;
 
   @override
+  Future<SonarrMediaManagementConfig> getMediaManagementConfig() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SonarrMediaManagementConfig>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'config/mediamanagement',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SonarrMediaManagementConfig.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<SonarrMediaManagementConfig> updateMediaManagementConfig(
+      {required config}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(config.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SonarrMediaManagementConfig>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'config/mediamanagement',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SonarrMediaManagementConfig.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<SonarrNamingConfig> getNamingConfig() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<SonarrNamingConfig>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'config/naming',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SonarrNamingConfig.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<SonarrNamingConfig> updateNamingConfig({required config}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(config.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<SonarrNamingConfig>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'config/naming',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SonarrNamingConfig.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<SonarrUiConfig> getUiConfig() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
