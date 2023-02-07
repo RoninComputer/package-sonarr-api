@@ -72,18 +72,22 @@ abstract class SonarrAPI {
   /// Get example formats from the naming configuration.
   @GET('config/naming/examples')
   Future<SonarrNamingConfigExamples> getNamingConfigExamples({
-    @Query('RenameMovies') bool? renameMovies,
-    @Query('ReplaceIllegalCharacters') bool? replaceIllegalCharacters,
-    @Query('ColonReplacementFormat')
-        SonarrColonReplacementFormat? colonReplacementFormat,
-    @Query('StandardMovieFormat') String? standardMovieFormat,
-    @Query('MovieFolderFormat') String? movieFolderFormat,
-    @Query('IncludeQuality') bool? includeQuality,
-    @Query('ReplaceSpaces') bool? replaceSpaces,
-    @Query('Separator') String? separator,
-    @Query('NumberStyle') String? numberStyle,
-    @Query('Id') int? id,
-    @Query('ResourceName') String? resourceName,
+    @Query('renameEpisodes') bool? renameEpisodes,
+    @Query('replaceIllegalCharacters') bool? replaceIllegalCharacters,
+    @Query('multiEpisodeStyle') int? multiEpisodeStyle,
+    @Query('standardEpisodeFormat') String? standardEpisodeFormat,
+    @Query('dailyEpisodeFormat') String? dailyEpisodeFormat,
+    @Query('animeEpisodeFormat') String? animeEpisodeFormat,
+    @Query('seriesFolderFormat') String? seriesFolderFormat,
+    @Query('seasonFolderFormat') String? seasonFolderFormat,
+    @Query('specialsFolderFormat') String? specialsFolderFormat,
+    @Query('includeSeriesTitle') bool? includeSeriesTitle,
+    @Query('includeEpisodeTitle') bool? includeEpisodeTitle,
+    @Query('includeQuality') bool? includeQuality,
+    @Query('replaceSpaces') bool? replaceSpaces,
+    @Query('separator') String? separator,
+    @Query('numberStyle') String? numberStyle,
+    @Query('id') int? id,
   });
 
   /// Get the UI configuration.

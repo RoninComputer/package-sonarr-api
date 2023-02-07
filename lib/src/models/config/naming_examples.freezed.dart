@@ -21,14 +21,14 @@ SonarrNamingConfigExamples _$SonarrNamingConfigExamplesFromJson(
 
 /// @nodoc
 mixin _$SonarrNamingConfigExamples {
-  String? get singleEpisodeExample => throw _privateConstructorUsedError;
-  String? get multiEpisodeExample => throw _privateConstructorUsedError;
-  String? get dailyEpisodeExample => throw _privateConstructorUsedError;
-  String? get animeEpisodeExample => throw _privateConstructorUsedError;
-  String? get animeMultiEpisodeExample => throw _privateConstructorUsedError;
-  String? get seriesFolderExample => throw _privateConstructorUsedError;
-  String? get seasonFolderExample => throw _privateConstructorUsedError;
-  String? get specialsFolderExample => throw _privateConstructorUsedError;
+  String get singleEpisodeExample => throw _privateConstructorUsedError;
+  String get multiEpisodeExample => throw _privateConstructorUsedError;
+  String get dailyEpisodeExample => throw _privateConstructorUsedError;
+  String get animeEpisodeExample => throw _privateConstructorUsedError;
+  String get animeMultiEpisodeExample => throw _privateConstructorUsedError;
+  String get seriesFolderExample => throw _privateConstructorUsedError;
+  String get seasonFolderExample => throw _privateConstructorUsedError;
+  String get specialsFolderExample => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,14 +44,14 @@ abstract class $SonarrNamingConfigExamplesCopyWith<$Res> {
           SonarrNamingConfigExamples>;
   @useResult
   $Res call(
-      {String? singleEpisodeExample,
-      String? multiEpisodeExample,
-      String? dailyEpisodeExample,
-      String? animeEpisodeExample,
-      String? animeMultiEpisodeExample,
-      String? seriesFolderExample,
-      String? seasonFolderExample,
-      String? specialsFolderExample});
+      {String singleEpisodeExample,
+      String multiEpisodeExample,
+      String dailyEpisodeExample,
+      String animeEpisodeExample,
+      String animeMultiEpisodeExample,
+      String seriesFolderExample,
+      String seasonFolderExample,
+      String specialsFolderExample});
 }
 
 /// @nodoc
@@ -68,48 +68,48 @@ class _$SonarrNamingConfigExamplesCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? singleEpisodeExample = freezed,
-    Object? multiEpisodeExample = freezed,
-    Object? dailyEpisodeExample = freezed,
-    Object? animeEpisodeExample = freezed,
-    Object? animeMultiEpisodeExample = freezed,
-    Object? seriesFolderExample = freezed,
-    Object? seasonFolderExample = freezed,
-    Object? specialsFolderExample = freezed,
+    Object? singleEpisodeExample = null,
+    Object? multiEpisodeExample = null,
+    Object? dailyEpisodeExample = null,
+    Object? animeEpisodeExample = null,
+    Object? animeMultiEpisodeExample = null,
+    Object? seriesFolderExample = null,
+    Object? seasonFolderExample = null,
+    Object? specialsFolderExample = null,
   }) {
     return _then(_value.copyWith(
-      singleEpisodeExample: freezed == singleEpisodeExample
+      singleEpisodeExample: null == singleEpisodeExample
           ? _value.singleEpisodeExample
           : singleEpisodeExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      multiEpisodeExample: freezed == multiEpisodeExample
+              as String,
+      multiEpisodeExample: null == multiEpisodeExample
           ? _value.multiEpisodeExample
           : multiEpisodeExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dailyEpisodeExample: freezed == dailyEpisodeExample
+              as String,
+      dailyEpisodeExample: null == dailyEpisodeExample
           ? _value.dailyEpisodeExample
           : dailyEpisodeExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      animeEpisodeExample: freezed == animeEpisodeExample
+              as String,
+      animeEpisodeExample: null == animeEpisodeExample
           ? _value.animeEpisodeExample
           : animeEpisodeExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      animeMultiEpisodeExample: freezed == animeMultiEpisodeExample
+              as String,
+      animeMultiEpisodeExample: null == animeMultiEpisodeExample
           ? _value.animeMultiEpisodeExample
           : animeMultiEpisodeExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriesFolderExample: freezed == seriesFolderExample
+              as String,
+      seriesFolderExample: null == seriesFolderExample
           ? _value.seriesFolderExample
           : seriesFolderExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seasonFolderExample: freezed == seasonFolderExample
+              as String,
+      seasonFolderExample: null == seasonFolderExample
           ? _value.seasonFolderExample
           : seasonFolderExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      specialsFolderExample: freezed == specialsFolderExample
+              as String,
+      specialsFolderExample: null == specialsFolderExample
           ? _value.specialsFolderExample
           : specialsFolderExample // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -124,14 +124,14 @@ abstract class _$$_SonarrNamingConfigExamplesCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? singleEpisodeExample,
-      String? multiEpisodeExample,
-      String? dailyEpisodeExample,
-      String? animeEpisodeExample,
-      String? animeMultiEpisodeExample,
-      String? seriesFolderExample,
-      String? seasonFolderExample,
-      String? specialsFolderExample});
+      {String singleEpisodeExample,
+      String multiEpisodeExample,
+      String dailyEpisodeExample,
+      String animeEpisodeExample,
+      String animeMultiEpisodeExample,
+      String seriesFolderExample,
+      String seasonFolderExample,
+      String specialsFolderExample});
 }
 
 /// @nodoc
@@ -147,48 +147,48 @@ class __$$_SonarrNamingConfigExamplesCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? singleEpisodeExample = freezed,
-    Object? multiEpisodeExample = freezed,
-    Object? dailyEpisodeExample = freezed,
-    Object? animeEpisodeExample = freezed,
-    Object? animeMultiEpisodeExample = freezed,
-    Object? seriesFolderExample = freezed,
-    Object? seasonFolderExample = freezed,
-    Object? specialsFolderExample = freezed,
+    Object? singleEpisodeExample = null,
+    Object? multiEpisodeExample = null,
+    Object? dailyEpisodeExample = null,
+    Object? animeEpisodeExample = null,
+    Object? animeMultiEpisodeExample = null,
+    Object? seriesFolderExample = null,
+    Object? seasonFolderExample = null,
+    Object? specialsFolderExample = null,
   }) {
     return _then(_$_SonarrNamingConfigExamples(
-      singleEpisodeExample: freezed == singleEpisodeExample
+      singleEpisodeExample: null == singleEpisodeExample
           ? _value.singleEpisodeExample
           : singleEpisodeExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      multiEpisodeExample: freezed == multiEpisodeExample
+              as String,
+      multiEpisodeExample: null == multiEpisodeExample
           ? _value.multiEpisodeExample
           : multiEpisodeExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dailyEpisodeExample: freezed == dailyEpisodeExample
+              as String,
+      dailyEpisodeExample: null == dailyEpisodeExample
           ? _value.dailyEpisodeExample
           : dailyEpisodeExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      animeEpisodeExample: freezed == animeEpisodeExample
+              as String,
+      animeEpisodeExample: null == animeEpisodeExample
           ? _value.animeEpisodeExample
           : animeEpisodeExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      animeMultiEpisodeExample: freezed == animeMultiEpisodeExample
+              as String,
+      animeMultiEpisodeExample: null == animeMultiEpisodeExample
           ? _value.animeMultiEpisodeExample
           : animeMultiEpisodeExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seriesFolderExample: freezed == seriesFolderExample
+              as String,
+      seriesFolderExample: null == seriesFolderExample
           ? _value.seriesFolderExample
           : seriesFolderExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      seasonFolderExample: freezed == seasonFolderExample
+              as String,
+      seasonFolderExample: null == seasonFolderExample
           ? _value.seasonFolderExample
           : seasonFolderExample // ignore: cast_nullable_to_non_nullable
-              as String?,
-      specialsFolderExample: freezed == specialsFolderExample
+              as String,
+      specialsFolderExample: null == specialsFolderExample
           ? _value.specialsFolderExample
           : specialsFolderExample // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -197,34 +197,34 @@ class __$$_SonarrNamingConfigExamplesCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_SonarrNamingConfigExamples implements _SonarrNamingConfigExamples {
   const _$_SonarrNamingConfigExamples(
-      {this.singleEpisodeExample,
-      this.multiEpisodeExample,
-      this.dailyEpisodeExample,
-      this.animeEpisodeExample,
-      this.animeMultiEpisodeExample,
-      this.seriesFolderExample,
-      this.seasonFolderExample,
-      this.specialsFolderExample});
+      {required this.singleEpisodeExample,
+      required this.multiEpisodeExample,
+      required this.dailyEpisodeExample,
+      required this.animeEpisodeExample,
+      required this.animeMultiEpisodeExample,
+      required this.seriesFolderExample,
+      required this.seasonFolderExample,
+      required this.specialsFolderExample});
 
   factory _$_SonarrNamingConfigExamples.fromJson(Map<String, dynamic> json) =>
       _$$_SonarrNamingConfigExamplesFromJson(json);
 
   @override
-  final String? singleEpisodeExample;
+  final String singleEpisodeExample;
   @override
-  final String? multiEpisodeExample;
+  final String multiEpisodeExample;
   @override
-  final String? dailyEpisodeExample;
+  final String dailyEpisodeExample;
   @override
-  final String? animeEpisodeExample;
+  final String animeEpisodeExample;
   @override
-  final String? animeMultiEpisodeExample;
+  final String animeMultiEpisodeExample;
   @override
-  final String? seriesFolderExample;
+  final String seriesFolderExample;
   @override
-  final String? seasonFolderExample;
+  final String seasonFolderExample;
   @override
-  final String? specialsFolderExample;
+  final String specialsFolderExample;
 
   @override
   String toString() {
@@ -286,34 +286,35 @@ class _$_SonarrNamingConfigExamples implements _SonarrNamingConfigExamples {
 abstract class _SonarrNamingConfigExamples
     implements SonarrNamingConfigExamples {
   const factory _SonarrNamingConfigExamples(
-      {final String? singleEpisodeExample,
-      final String? multiEpisodeExample,
-      final String? dailyEpisodeExample,
-      final String? animeEpisodeExample,
-      final String? animeMultiEpisodeExample,
-      final String? seriesFolderExample,
-      final String? seasonFolderExample,
-      final String? specialsFolderExample}) = _$_SonarrNamingConfigExamples;
+          {required final String singleEpisodeExample,
+          required final String multiEpisodeExample,
+          required final String dailyEpisodeExample,
+          required final String animeEpisodeExample,
+          required final String animeMultiEpisodeExample,
+          required final String seriesFolderExample,
+          required final String seasonFolderExample,
+          required final String specialsFolderExample}) =
+      _$_SonarrNamingConfigExamples;
 
   factory _SonarrNamingConfigExamples.fromJson(Map<String, dynamic> json) =
       _$_SonarrNamingConfigExamples.fromJson;
 
   @override
-  String? get singleEpisodeExample;
+  String get singleEpisodeExample;
   @override
-  String? get multiEpisodeExample;
+  String get multiEpisodeExample;
   @override
-  String? get dailyEpisodeExample;
+  String get dailyEpisodeExample;
   @override
-  String? get animeEpisodeExample;
+  String get animeEpisodeExample;
   @override
-  String? get animeMultiEpisodeExample;
+  String get animeMultiEpisodeExample;
   @override
-  String? get seriesFolderExample;
+  String get seriesFolderExample;
   @override
-  String? get seasonFolderExample;
+  String get seasonFolderExample;
   @override
-  String? get specialsFolderExample;
+  String get specialsFolderExample;
   @override
   @JsonKey(ignore: true)
   _$$_SonarrNamingConfigExamplesCopyWith<_$_SonarrNamingConfigExamples>

@@ -8,14 +8,14 @@ part 'naming_examples.g.dart';
 class SonarrNamingConfigExamples
     with _$SonarrNamingConfigExamples, JsonSerializableMixin {
   const factory SonarrNamingConfigExamples({
-    String? singleEpisodeExample,
-    String? multiEpisodeExample,
-    String? dailyEpisodeExample,
-    String? animeEpisodeExample,
-    String? animeMultiEpisodeExample,
-    String? seriesFolderExample,
-    String? seasonFolderExample,
-    String? specialsFolderExample,
+    required String singleEpisodeExample,
+    required String multiEpisodeExample,
+    required String dailyEpisodeExample,
+    required String animeEpisodeExample,
+    required String animeMultiEpisodeExample,
+    required String seriesFolderExample,
+    required String seasonFolderExample,
+    required String specialsFolderExample,
   }) = _SonarrNamingConfigExamples;
 
   factory SonarrNamingConfigExamples.fromJson(Map<String, Object?> json) =>
