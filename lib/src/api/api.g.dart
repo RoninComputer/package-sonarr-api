@@ -19,6 +19,54 @@ class _SonarrAPI implements SonarrAPI {
   String? baseUrl;
 
   @override
+  Future<SonarrDownloadClientConfig> getDownloadClientConfig() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SonarrDownloadClientConfig>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'config/downloadclient',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SonarrDownloadClientConfig.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<SonarrDownloadClientConfig> updateDownloadClientConfig(
+      {required config}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(config.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SonarrDownloadClientConfig>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'config/downloadclient',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SonarrDownloadClientConfig.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<SonarrMediaManagementConfig> getMediaManagementConfig() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

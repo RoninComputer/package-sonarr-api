@@ -22,7 +22,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - DelayProfile
 - DiskSpace
 - DownloadClient
-- DownloadClientConfig
 - Episode
 - EpisodeFile
 - FileSystem

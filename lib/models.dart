@@ -1,6 +1,7 @@
 library models;
 
 export 'src/models/backup/backup.dart';
+export 'src/models/config/download_client.dart';
 export 'src/models/config/media_management.dart';
 export 'src/models/config/naming.dart';
 export 'src/models/config/ui.dart';

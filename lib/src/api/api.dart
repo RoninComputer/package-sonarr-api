@@ -19,6 +19,16 @@ abstract class SonarrAPI {
     return _SonarrAPI(dio);
   }
 
+  /// Get the download client configuration.
+  @GET('config/downloadclient')
+  Future<SonarrDownloadClientConfig> getDownloadClientConfig();
+
+  /// Update the download client configuration.
+  @PUT('config/downloadclient')
+  Future<SonarrDownloadClientConfig> updateDownloadClientConfig({
+    @Body() required SonarrDownloadClientConfig config,
+  });
+
   /// Get the media management configuration.
   @GET('config/mediamanagement')
   Future<SonarrMediaManagementConfig> getMediaManagementConfig();
