@@ -19,20 +19,14 @@ abstract class SonarrAPI {
     return _SonarrAPI(dio);
   }
 
-  /// Get a list of all system backups.
-  @GET('system/backup')
-  Future<List<SonarrBackup>> getBackups();
+  /// Get the UI configuration.
+  @GET('config/ui')
+  Future<SonarrUiConfig> getUiConfig();
 
-  /// Delete a system backup by ID.
-  @DELETE('system/backup/{id}')
-  Future<void> deleteBackup({
-    @Path('id') required int id,
-  });
-
-  /// Restore a system backup by ID.
-  @POST('system/backup/restore/{id}')
-  Future<void> restoreBackup({
-    @Path('id') required int id,
+  /// Update the UI configuration.
+  @PUT('config/ui')
+  Future<SonarrUiConfig> updateUiConfig({
+    @Body() required SonarrUiConfig config,
   });
 
   /// Get a list of logs.
@@ -64,6 +58,22 @@ abstract class SonarrAPI {
   @DioResponseType(ResponseType.bytes)
   Future<List<int>> getUpdateLogFileData({
     @Path('name') required String name,
+  });
+
+  /// Get a list of all system backups.
+  @GET('system/backup')
+  Future<List<SonarrBackup>> getBackups();
+
+  /// Delete a system backup by ID.
+  @DELETE('system/backup/{id}')
+  Future<void> deleteBackup({
+    @Path('id') required int id,
+  });
+
+  /// Restore a system backup by ID.
+  @POST('system/backup/restore/{id}')
+  Future<void> restoreBackup({
+    @Path('id') required int id,
   });
 
   /// Get a list of Sonarr updates.
