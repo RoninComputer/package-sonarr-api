@@ -29,6 +29,16 @@ abstract class SonarrAPI {
     @Body() required SonarrDownloadClientConfig config,
   });
 
+  /// Get the host configuration.
+  @GET('config/host')
+  Future<SonarrHostConfig> getHostConfig();
+
+  /// Update the host configuration.
+  @PUT('config/host')
+  Future<SonarrHostConfig> updateHostConfig({
+    @Body() required SonarrHostConfig config,
+  });
+
   /// Get the media management configuration.
   @GET('config/mediamanagement')
   Future<SonarrMediaManagementConfig> getMediaManagementConfig();

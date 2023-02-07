@@ -27,7 +27,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - FileSystem
 - Health
 - History
-- HostConfig
 - ImportList
 - ImportListExclusion
 - Indexer
