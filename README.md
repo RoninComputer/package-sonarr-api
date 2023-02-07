@@ -109,6 +109,6 @@ final queue = await api.getQueue();   // Get items in the queue
 
 [website]: https://sonarr.tv
 [swagger]: https://sonarr.tv/docs/api/
-[license-shield]: https://img.shields.io/github/license/RoninComputer/dart-sonarr-api?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/RoninComputer/package-sonarr-api?style=for-the-badge
 [pubdev]: https://pub.dev/packages/sonarr_api/
 [pubdev-shield]: https://img.shields.io/pub/v/sonarr_api.svg?style=for-the-badge
