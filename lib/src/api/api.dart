@@ -39,6 +39,16 @@ abstract class SonarrAPI {
     @Body() required SonarrHostConfig config,
   });
 
+  /// Get the indexer configuration.
+  @GET('config/indexer')
+  Future<SonarrIndexerConfig> getIndexerConfig();
+
+  /// Update the indexer configuration.
+  @PUT('config/indexer')
+  Future<SonarrIndexerConfig> updateIndexerConfig({
+    @Body() required SonarrIndexerConfig config,
+  });
+
   /// Get the media management configuration.
   @GET('config/mediamanagement')
   Future<SonarrMediaManagementConfig> getMediaManagementConfig();
@@ -57,6 +67,23 @@ abstract class SonarrAPI {
   @PUT('config/naming')
   Future<SonarrNamingConfig> updateNamingConfig({
     @Body() required SonarrNamingConfig config,
+  });
+
+  /// Get example formats from the naming configuration.
+  @GET('config/naming/examples')
+  Future<SonarrNamingConfigExamples> getNamingConfigExamples({
+    @Query('RenameMovies') bool? renameMovies,
+    @Query('ReplaceIllegalCharacters') bool? replaceIllegalCharacters,
+    @Query('ColonReplacementFormat')
+        SonarrColonReplacementFormat? colonReplacementFormat,
+    @Query('StandardMovieFormat') String? standardMovieFormat,
+    @Query('MovieFolderFormat') String? movieFolderFormat,
+    @Query('IncludeQuality') bool? includeQuality,
+    @Query('ReplaceSpaces') bool? replaceSpaces,
+    @Query('Separator') String? separator,
+    @Query('NumberStyle') String? numberStyle,
+    @Query('Id') int? id,
+    @Query('ResourceName') String? resourceName,
   });
 
   /// Get the UI configuration.

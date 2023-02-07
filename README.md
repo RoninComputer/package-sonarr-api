@@ -1,11 +1,11 @@
 # Sonarr API
 
-[![Pubdev][pubdev-shield]][pubdev]
-![License][license-shield]
+[![Pubdev][shield-pubdev]][link-pubdev]
+![License][shield-license]
 
-Dart library package providing an abstraction for [Sonarr][website]'s public API.
+Dart library package providing an abstraction for [Sonarr][link-website]'s public API.
 
-This package is intended to supply a 1:1 mapping of the [public API documentation][swagger] and does not make assumptions on orchestration to execute different workflows.
+This package is intended to supply a 1:1 mapping of the [public API documentation][link-swagger] and does not make assumptions on orchestration to execute different workflows.
 
 # Endpoints Requiring Implementation
 
@@ -30,7 +30,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - ImportList
 - ImportListExclusion
 - Indexer
-- IndexerConfig
 - InitializeJs
 - Language
 - LanguageProfile
@@ -101,8 +100,16 @@ final queue = await api.getQueue();   // Get items in the queue
 ...
 ```
 
-[website]: https://sonarr.tv
-[swagger]: https://sonarr.tv/docs/api/
-[license-shield]: https://img.shields.io/github/license/RoninComputer/package-sonarr-api?style=for-the-badge
-[pubdev]: https://pub.dev/packages/sonarr_api/
-[pubdev-shield]: https://img.shields.io/pub/v/sonarr_api.svg?style=for-the-badge
+# Additional Notes
+
+1. All available API methods can be viewed in the [generated Dart documentation][link-docs]
+2. All models are immutable [freezed][link-freezed]-generated classes that can be modified using the `<model>.copyWith(...)` method
+3. All models are JSON serializable using the `<model>.toJson()` method
+
+[link-docs]: https://pub.dev/documentation/sonarr_api/latest/api/SonarrAPI-class.html
+[link-freezed]: https://pub.dev/packages/freezed
+[link-pubdev]: https://pub.dev/packages/sonarr_api
+[link-swagger]: https://sonarr.tv/docs/api
+[link-website]: https://sonarr.tv
+[shield-license]: https://img.shields.io/github/license/RoninComputer/package-sonarr-api?style=for-the-badge
+[shield-pubdev]: https://img.shields.io/pub/v/sonarr_api.svg?style=for-the-badge
