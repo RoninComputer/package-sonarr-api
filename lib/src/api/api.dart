@@ -147,6 +147,35 @@ abstract class SonarrAPI {
     @Path('id') required int id,
   });
 
+  /// Get a list of all created tags.
+  @GET('tag')
+  Future<List<SonarrTag>> getTags();
+
+  /// Create a new tag.
+  @POST('tag')
+  Future<SonarrTag> createTag({
+    @Body() required SonarrTag tag,
+  });
+
+  /// Get a single tag by ID.
+  @GET('tag/{id}')
+  Future<SonarrTag> getTag({
+    @Path('id') required int id,
+  });
+
+  /// Delete a tag.
+  @DELETE('tag/{id}')
+  Future<void> deleteTag({
+    @Path('id') required int id,
+  });
+
+  /// Update a tag.
+  @PUT('tag/{id}')
+  Future<SonarrTag> updateTag({
+    @Path('id') required int id,
+    @Body() required SonarrTag tag,
+  });
+
   /// Get a list of Sonarr updates.
   @GET('update')
   Future<List<SonarrUpdate>> getUpdates();
