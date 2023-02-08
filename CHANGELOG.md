@@ -1,3 +1,11 @@
+# 0.0.1-pre.4
+
+- support /rootfolder/[id] endpoint
+- support /system/[status|restart|shutdown] endpoint
+- support /tag/[id] endpoint
+- support /tag/detail/[id] endpoint
+- fix: set correct query parameters for /config/naming/examples
+
 # 0.0.1-pre.3
 
 - support /config/downloadclient endpoint
