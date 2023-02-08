@@ -10,5 +10,6 @@ export 'src/types/log_level.dart';
 export 'src/types/proper_download_type.dart';
 export 'src/types/proxy_type.dart';
 export 'src/types/rescan_after_refresh_type.dart';
+export 'src/types/runtime_mode.dart';
 export 'src/types/sort_direction.dart';
 export 'src/types/update_mechanism.dart';

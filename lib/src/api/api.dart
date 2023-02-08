@@ -147,6 +147,18 @@ abstract class SonarrAPI {
     @Path('id') required int id,
   });
 
+  /// Restart the instance of Sonarr.
+  @POST('system/restart')
+  Future<void> restartInstance();
+
+  /// Shutdown the instance of Sonarr.
+  @POST('system/shutdown')
+  Future<void> shutdownInstance();
+
+  /// Get system status information.
+  @GET('system/status')
+  Future<SonarrSystemStatus> getSystemStatus();
+
   /// Get a list of all created tags.
   @GET('tag')
   Future<List<SonarrTag>> getTags();
