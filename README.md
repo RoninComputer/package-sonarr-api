@@ -61,7 +61,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - SeriesImport
 - SeriesLookup
 - System
-- TagDetails
 - Task
 
 # Preparing Sonarr

@@ -176,6 +176,16 @@ abstract class SonarrAPI {
     @Body() required SonarrTag tag,
   });
 
+  /// Get detailed information about all created tags.
+  @GET('tag/detail')
+  Future<List<SonarrTagDetails>> getTagsDetails();
+
+  /// Get detailed information about a single tag by ID.
+  @GET('tag/detail/{id}')
+  Future<SonarrTagDetails> getTagDetails({
+    @Path('id') required int id,
+  });
+
   /// Get a list of Sonarr updates.
   @GET('update')
   Future<List<SonarrUpdate>> getUpdates();
