@@ -11,6 +11,8 @@ export 'src/models/config/ui.dart';
 export 'src/models/log/file.dart';
 export 'src/models/log/log.dart';
 export 'src/models/paged_result/paged_result.dart';
+export 'src/models/root_folder/root_folder.dart';
+export 'src/models/root_folder/unmapped_folder.dart';
 export 'src/models/system/status.dart';
 export 'src/models/tag/details.dart';
 export 'src/models/tag/tag.dart';

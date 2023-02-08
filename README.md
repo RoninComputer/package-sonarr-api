@@ -54,13 +54,11 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - ReleasePush
 - RemotePathMapping
 - RenameEpisode
-- RootFolder
 - SeasonPass
 - Series
 - SeriesEditor
 - SeriesImport
 - SeriesLookup
-- System
 - Task
 
 # Preparing Sonarr

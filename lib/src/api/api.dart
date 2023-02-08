@@ -131,6 +131,28 @@ abstract class SonarrAPI {
     @Path('name') required String name,
   });
 
+  /// Get a list of all created root folders.
+  @GET('rootfolder')
+  Future<List<SonarrRootFolder>> getRootFolders();
+
+  /// Create a new root folder.
+  @POST('rootfolder')
+  Future<SonarrRootFolder> createRootFolder({
+    @Body() required SonarrRootFolder rootFolder,
+  });
+
+  /// Get a single root folder by ID.
+  @GET('rootfolder/{id}')
+  Future<SonarrRootFolder> getRootFolder({
+    @Path('id') required int id,
+  });
+
+  /// Delete a root folder.
+  @DELETE('rootfolder/{id}')
+  Future<void> deleteRootFolder({
+    @Path('id') required int id,
+  });
+
   /// Get a list of all system backups.
   @GET('system/backup')
   Future<List<SonarrBackup>> getBackups();
