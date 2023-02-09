@@ -181,6 +181,16 @@ abstract class SonarrAPI {
   @GET('system/status')
   Future<SonarrSystemStatus> getSystemStatus();
 
+  /// Get a list of all system tasks.
+  @GET('system/task')
+  Future<List<SonarrTask>> getTasks();
+
+  /// Get a single system task by ID.
+  @GET('system/task/{id}')
+  Future<SonarrTask> getTask({
+    @Path('id') required int id,
+  });
+
   /// Get a list of all created tags.
   @GET('tag')
   Future<List<SonarrTag>> getTags();

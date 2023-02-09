@@ -16,5 +16,6 @@ export 'src/models/root_folder/unmapped_folder.dart';
 export 'src/models/system/status.dart';
 export 'src/models/tag/details.dart';
 export 'src/models/tag/tag.dart';
+export 'src/models/task/task.dart';
 export 'src/models/update/changes.dart';
 export 'src/models/update/update.dart';
