@@ -361,6 +361,31 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
+  Future<List<SonarrDiskSpace>> getDiskSpace() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<List<dynamic>>(_setStreamType<List<SonarrDiskSpace>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'diskspace',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => SonarrDiskSpace.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
   Future<SonarrPagedResult<SonarrLog>> getLogs({
     page,
     pageSize,

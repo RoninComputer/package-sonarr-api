@@ -100,6 +100,10 @@ abstract class SonarrAPI {
     @Body() required SonarrUiConfig config,
   });
 
+  /// Get a list of disk spaces.
+  @GET('diskspace')
+  Future<List<SonarrDiskSpace>> getDiskSpace();
+
   /// Get a list of logs.
   @GET('log')
   Future<SonarrPagedResult<SonarrLog>> getLogs({
