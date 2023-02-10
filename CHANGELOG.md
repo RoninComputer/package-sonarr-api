@@ -1,3 +1,11 @@
+# 0.0.1-pre.5
+
+- support /delayprofile/[id] endpoint
+- support /diskspace endpoint
+- support /filesystem/[type|mediafiles] endpoint
+- support /system/task/[id] endpoint
+- added mason configuration
+
 # 0.0.1-pre.4
 
 - support /rootfolder/[id] endpoint
