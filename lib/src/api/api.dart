@@ -104,6 +104,35 @@ abstract class SonarrAPI {
   @GET('diskspace')
   Future<List<SonarrDiskSpace>> getDiskSpace();
 
+  /// Get a list of all created delay profiles.
+  @GET('delayprofile')
+  Future<List<SonarrDelayProfile>> getDelayProfiles();
+
+  /// Create a new delay profile.
+  @POST('delayprofile')
+  Future<SonarrDelayProfile> createDelayProfile({
+    @Body() required SonarrDelayProfile profile,
+  });
+
+  /// Get a single delay profile by ID.
+  @GET('delayprofile/{id}')
+  Future<SonarrDelayProfile> getDelayProfile({
+    @Path('id') required int id,
+  });
+
+  /// Update a delay profile.
+  @PUT('delayprofile/{id}')
+  Future<SonarrDelayProfile> updateDelayProfile({
+    @Path('id') required int id,
+    @Body() required SonarrDelayProfile profile,
+  });
+
+  /// Delete a delay profile.
+  @DELETE('delayprofile/{id}')
+  Future<void> deleteDelayProfile({
+    @Path('id') required int id,
+  });
+
   /// Get details about directories and files in the filesystem.
   @GET('filesystem')
   Future<SonarrFileSystem> getFileSystem({

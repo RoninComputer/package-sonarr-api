@@ -8,6 +8,7 @@ export 'src/models/config/media_management.dart';
 export 'src/models/config/naming.dart';
 export 'src/models/config/naming_examples.dart';
 export 'src/models/config/ui.dart';
+export 'src/models/delay_profile/delay_profile.dart';
 export 'src/models/disk_space/disk_space.dart';
 export 'src/models/file_system/directory.dart';
 export 'src/models/file_system/file.dart';
