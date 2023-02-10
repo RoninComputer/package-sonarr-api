@@ -243,6 +243,13 @@ abstract class SonarrAPI {
     @Body() required SonarrRemotePathMapping mapping,
   });
 
+  /// Get a preview of results for renaming an episode file.
+  @GET('rename')
+  Future<List<SonarrEpisodeRenamePreview>> getEpisodeRenamePreview({
+    @Query('seriesId') required int seriesId,
+    @Query('seasonNumber') int? seasonNumber,
+  });
+
   /// Get a list of all created root folders.
   @GET('rootfolder')
   Future<List<SonarrRootFolder>> getRootFolders();

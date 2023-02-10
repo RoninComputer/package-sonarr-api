@@ -10,6 +10,7 @@ export 'src/models/config/naming_examples.dart';
 export 'src/models/config/ui.dart';
 export 'src/models/delay_profile/delay_profile.dart';
 export 'src/models/disk_space/disk_space.dart';
+export 'src/models/episode/rename_preview.dart';
 export 'src/models/file_system/directory.dart';
 export 'src/models/file_system/file.dart';
 export 'src/models/file_system/file_system.dart';

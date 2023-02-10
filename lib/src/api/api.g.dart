@@ -967,6 +967,39 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
+  Future<List<SonarrEpisodeRenamePreview>> getEpisodeRenamePreview({
+    required seriesId,
+    seasonNumber,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'seriesId': seriesId,
+      r'seasonNumber': seasonNumber,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<SonarrEpisodeRenamePreview>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'rename',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) =>
+            SonarrEpisodeRenamePreview.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
   Future<List<SonarrRootFolder>> getRootFolders() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
