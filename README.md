@@ -41,7 +41,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - QueueStatus
 - Release
 - ReleasePush
-- RemotePathMapping
 - RenameEpisode
 - SeasonPass
 - Series

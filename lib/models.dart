@@ -19,6 +19,7 @@ export 'src/models/log/file.dart';
 export 'src/models/log/log.dart';
 export 'src/models/paged_result/paged_result.dart';
 export 'src/models/release_profile/release_profile.dart';
+export 'src/models/remote_path_mapping/remote_path_mapping.dart';
 export 'src/models/root_folder/root_folder.dart';
 export 'src/models/root_folder/unmapped_folder.dart';
 export 'src/models/system/status.dart';

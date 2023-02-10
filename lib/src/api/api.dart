@@ -214,6 +214,35 @@ abstract class SonarrAPI {
     @Path('id') required int id,
   });
 
+  /// Get a list of all created remote path mappings.
+  @GET('remotepathmapping')
+  Future<List<SonarrRemotePathMapping>> getRemotePathMappings();
+
+  /// Create a new remote path mapping.
+  @POST('remotepathmapping')
+  Future<SonarrRemotePathMapping> createRemotePathMapping({
+    @Body() required SonarrRemotePathMapping mapping,
+  });
+
+  /// Get a single remote path mapping by ID.
+  @GET('remotepathmapping/{id}')
+  Future<SonarrRemotePathMapping> getRemotePathMapping({
+    @Path('id') required int id,
+  });
+
+  /// Delete a remote path mapping.
+  @DELETE('remotepathmapping/{id}')
+  Future<void> deleteRemotePathMapping({
+    @Path('id') required int id,
+  });
+
+  /// Update a remote path mapping.
+  @PUT('remotepathmapping/{id}')
+  Future<SonarrRemotePathMapping> updateRemotePathMapping({
+    @Path('id') required int id,
+    @Body() required SonarrRemotePathMapping mapping,
+  });
+
   /// Get a list of all created root folders.
   @GET('rootfolder')
   Future<List<SonarrRootFolder>> getRootFolders();
