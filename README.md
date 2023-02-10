@@ -15,7 +15,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - CustomFilter
 - CustomFormat
 - Cutoff
-- DelayProfile
 - DownloadClient
 - Episode
 - EpisodeFile
@@ -41,7 +40,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - QueueDetails
 - QueueStatus
 - Release
-- ReleaseProfile
 - ReleasePush
 - RemotePathMapping
 - RenameEpisode

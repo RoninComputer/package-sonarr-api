@@ -185,6 +185,35 @@ abstract class SonarrAPI {
     @Path('name') required String name,
   });
 
+  /// Get a list of all created release profiles.
+  @GET('releaseprofile')
+  Future<List<SonarrReleaseProfile>> getReleaseProfiles();
+
+  /// Create a new release profile.
+  @POST('releaseprofile')
+  Future<SonarrReleaseProfile> createReleaseProfile({
+    @Body() required SonarrReleaseProfile profile,
+  });
+
+  /// Get a single release profile by ID.
+  @GET('releaseprofile/{id}')
+  Future<SonarrReleaseProfile> getReleaseProfile({
+    @Path('id') required int id,
+  });
+
+  /// Update a release profile.
+  @PUT('releaseprofile/{id}')
+  Future<SonarrReleaseProfile> updateReleaseProfile({
+    @Path('id') required int id,
+    @Body() required SonarrReleaseProfile profile,
+  });
+
+  /// Delete a release profile.
+  @DELETE('releaseprofile/{id}')
+  Future<void> deleteReleaseProfile({
+    @Path('id') required int id,
+  });
+
   /// Get a list of all created root folders.
   @GET('rootfolder')
   Future<List<SonarrRootFolder>> getRootFolders();
