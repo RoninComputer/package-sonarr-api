@@ -104,6 +104,27 @@ abstract class SonarrAPI {
   @GET('diskspace')
   Future<List<SonarrDiskSpace>> getDiskSpace();
 
+  /// Get details about directories and files in the filesystem.
+  @GET('filesystem')
+  Future<SonarrFileSystem> getFileSystem({
+    @Query('path') String? path,
+    @Query('includeFiles') bool? includeFiles,
+    @Query('allowFoldersWithoutTrailingSlashes')
+        bool? allowFoldersWithoutTrailingSlashes,
+  });
+
+  /// Get a list of all media files at the given path in the filesystem.
+  @GET('filesystem/mediafiles')
+  Future<List<SonarrFileSystemMediaFile>> getFileSystemMediaFiles({
+    @Query('path') required String path,
+  });
+
+  /// Get the type of the entity at the given path in the filesystem.
+  @GET('filesystem/type')
+  Future<SonarrFileSystemType> getFileSystemType({
+    @Query('path') required String path,
+  });
+
   /// Get a list of logs.
   @GET('log')
   Future<SonarrPagedResult<SonarrLog>> getLogs({

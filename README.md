@@ -23,7 +23,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - DownloadClient
 - Episode
 - EpisodeFile
-- FileSystem
 - Health
 - History
 - ImportList

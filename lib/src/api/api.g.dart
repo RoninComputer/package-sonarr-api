@@ -386,6 +386,88 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
+  Future<SonarrFileSystem> getFileSystem({
+    path,
+    includeFiles,
+    allowFoldersWithoutTrailingSlashes,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'path': path,
+      r'includeFiles': includeFiles,
+      r'allowFoldersWithoutTrailingSlashes': allowFoldersWithoutTrailingSlashes,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<SonarrFileSystem>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'filesystem',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SonarrFileSystem.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<List<SonarrFileSystemMediaFile>> getFileSystemMediaFiles(
+      {required path}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'path': path};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<SonarrFileSystemMediaFile>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'filesystem/mediafiles',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) =>
+            SonarrFileSystemMediaFile.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<SonarrFileSystemType> getFileSystemType({required path}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'path': path};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SonarrFileSystemType>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'filesystem/type',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SonarrFileSystemType.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<SonarrPagedResult<SonarrLog>> getLogs({
     page,
     pageSize,
