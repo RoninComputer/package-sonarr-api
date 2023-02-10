@@ -9,12 +9,8 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 
 # Endpoints Requiring Implementation
 
-- ApiInfo
-- Authentication
-- StaticResource
 - Blocklist
 - Calendar
-- CalendarFeed
 - Command
 - CustomFilter
 - CustomFormat
@@ -28,18 +24,15 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - ImportList
 - ImportListExclusion
 - Indexer
-- InitializeJs
 - Language
 - LanguageProfile
 - LanguageProfileSchema
-- Localization
 - ManualImport
 - MediaCover
 - Metadata
 - Missing
 - Notification
 - Parse
-- Ping
 - QualityDefinition
 - QualityProfile
 - QualityProfileSchema
