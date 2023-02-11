@@ -154,6 +154,56 @@ abstract class SonarrAPI {
     @Query('path') required String path,
   });
 
+  /// Get a list of all added indexers.
+  @GET('indexer')
+  Future<List<SonarrIndexer>> getIndexers();
+
+  /// Create a new indexer.
+  @POST('indexer')
+  Future<SonarrIndexer> createIndexer({
+    @Body() required SonarrIndexer indexer,
+  });
+
+  /// Get a single indexer by ID.
+  @GET('indexer/{id}')
+  Future<SonarrIndexer> getIndexer({
+    @Path('id') required int id,
+  });
+
+  /// Update an existing indexer.
+  @PUT('indexer/{id}')
+  Future<SonarrIndexer> updateIndexer({
+    @Path('id') required int id,
+    @Body() required SonarrIndexer indexer,
+  });
+
+  /// Delete a indexer.
+  @DELETE('indexer/{id}')
+  Future<void> deleteIndexer({
+    @Path('id') required int id,
+  });
+
+  /// Get all schemas for the available indexers.
+  @GET('indexer/schema')
+  Future<List<SonarrIndexer>> getIndexerSchemas();
+
+  /// Test a single indexer configuration.
+  @POST('indexer/test')
+  Future<void> testIndexer({
+    @Body() required SonarrIndexer indexer,
+  });
+
+  /// Test all added indexer configurations.
+  @POST('indexer/testall')
+  Future<List<SonarrIndexerTestResult>> testAllIndexers();
+
+  /// Trigger a indexer action by action name.
+  @POST('indexer/action/{action}')
+  Future<void> triggerIndexerAction({
+    @Path('action') required String action,
+    @Body() required SonarrIndexer indexer,
+  });
+
   /// Get a list of logs.
   @GET('log')
   Future<SonarrPagedResult<SonarrLog>> getLogs({
@@ -161,6 +211,7 @@ abstract class SonarrAPI {
     @Query('pageSize') int? pageSize,
     @Query('sortKey') String? sortKey,
     @Query('sortDirection') SonarrSortDirection? sortDirection,
+    @Query('level') SonarrLogLevel? level,
   });
 
   /// Get a list of log files.
