@@ -1,3 +1,14 @@
+# 0.0.1-pre.6
+
+- support /customformat/[id|schema] support
+- support /episode/[id|monitor] endpoint
+- support /indexer/[id|schema|test|testall|action] endpoint
+- support /mediacover/{seriesId}/[banner|fanart|poster] endpoint
+- support /releaseprofile/[id] endpoint
+- support /remotepathmapping/[id] endpoint
+- support /rename endpoint
+- support /series/[id] endpoint
+
 # 0.0.1-pre.5
 
 - support /delayprofile/[id] endpoint
