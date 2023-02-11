@@ -944,6 +944,87 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
+  Future<List<int>> getBannerImage({
+    required seriesId,
+    required size,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<int>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+      responseType: ResponseType.bytes,
+    )
+            .compose(
+              _dio.options,
+              'mediacover/${seriesId}/banner${size.name}.jpg',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data!.cast<int>();
+    return value;
+  }
+
+  @override
+  Future<List<int>> getFanartImage({
+    required seriesId,
+    required size,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<int>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+      responseType: ResponseType.bytes,
+    )
+            .compose(
+              _dio.options,
+              'mediacover/${seriesId}/fanart${size.name}.jpg',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data!.cast<int>();
+    return value;
+  }
+
+  @override
+  Future<List<int>> getPosterImage({
+    required seriesId,
+    required size,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<int>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+      responseType: ResponseType.bytes,
+    )
+            .compose(
+              _dio.options,
+              'mediacover/${seriesId}/poster${size.name}.jpg',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data!.cast<int>();
+    return value;
+  }
+
+  @override
   Future<List<SonarrReleaseProfile>> getReleaseProfiles() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

@@ -26,7 +26,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - LanguageProfile
 - LanguageProfileSchema
 - ManualImport
-- MediaCover
 - Metadata
 - Missing
 - Notification

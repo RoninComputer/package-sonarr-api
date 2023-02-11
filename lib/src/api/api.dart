@@ -236,6 +236,30 @@ abstract class SonarrAPI {
     @Path('name') required String name,
   });
 
+  /// Get a poster image from Sonarr's media cover cache.
+  @GET('mediacover/{seriesId}/banner{size}.jpg')
+  @DioResponseType(ResponseType.bytes)
+  Future<List<int>> getBannerImage({
+    @Path('seriesId') required int seriesId,
+    @Path('size') required SonarrImageSizeBanner size,
+  });
+
+  /// Get a fanart image from Sonarr's media cover cache.
+  @GET('mediacover/{seriesId}/fanart{size}.jpg')
+  @DioResponseType(ResponseType.bytes)
+  Future<List<int>> getFanartImage({
+    @Path('seriesId') required int seriesId,
+    @Path('size') required SonarrImageSizeFanart size,
+  });
+
+  /// Get a poster image from Sonarr's media cover cache.
+  @GET('mediacover/{seriesId}/poster{size}.jpg')
+  @DioResponseType(ResponseType.bytes)
+  Future<List<int>> getPosterImage({
+    @Path('seriesId') required int seriesId,
+    @Path('size') required SonarrImageSizePoster size,
+  });
+
   /// Get a list of all created release profiles.
   @GET('releaseprofile')
   Future<List<SonarrReleaseProfile>> getReleaseProfiles();
