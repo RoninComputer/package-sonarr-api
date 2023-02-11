@@ -323,6 +323,39 @@ abstract class SonarrAPI {
     @Path('id') required int id,
   });
 
+  /// Get a list of all added series.
+  @GET('series')
+  Future<List<SonarrSeries>> getAllSeries({
+    @Query('tmdbId') int? tmdbId,
+  });
+
+  /// Create a new series.
+  @POST('series')
+  Future<SonarrSeries> createSeries({
+    @Body() required SonarrSeries series,
+  });
+
+  /// Get a single series by ID.
+  @GET('series/{id}')
+  Future<SonarrSeries> getSeries({
+    @Path('id') required int id,
+  });
+
+  /// Update an existing series.
+  @PUT('series/{id}')
+  Future<SonarrSeries> updateSeries({
+    @Path('id') required int id,
+    @Body() required SonarrSeries series,
+  });
+
+  /// Delete a series.
+  @DELETE('series/{id}')
+  Future<void> deleteSeries({
+    @Path('id') required int id,
+    @Query('deleteFiles') bool? deleteFiles,
+    @Query('addImportListExclusion') bool? addImportListExclusion,
+  });
+
   /// Get a list of all system backups.
   @GET('system/backup')
   Future<List<SonarrBackup>> getBackups();

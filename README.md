@@ -41,7 +41,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - Release
 - ReleasePush
 - SeasonPass
-- Series
 - SeriesEditor
 - SeriesImport
 - SeriesLookup
