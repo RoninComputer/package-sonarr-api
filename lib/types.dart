@@ -18,6 +18,7 @@ export 'src/types/privacy_level.dart';
 export 'src/types/proper_download_type.dart';
 export 'src/types/provider_message_type.dart';
 export 'src/types/proxy_type.dart';
+export 'src/types/quality_source.dart';
 export 'src/types/rescan_after_refresh_type.dart';
 export 'src/types/runtime_mode.dart';
 export 'src/types/series_status.dart';

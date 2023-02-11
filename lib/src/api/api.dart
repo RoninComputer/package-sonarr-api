@@ -133,6 +133,37 @@ abstract class SonarrAPI {
     @Path('id') required int id,
   });
 
+  /// Get a list of episodes.
+  ///
+  /// One of `seriesId` or `seasonNumber` are required.
+  @GET('episode')
+  Future<List<SonarrEpisode>> getEpisodes({
+    @Query('seriesId') int? seriesId,
+    @Query('seasonNumber') int? seasonNumber,
+    @Query('episodeIds') List<int>? episodeIds,
+    @Query('episodeFileId') int? episodeFileId,
+    @Query('includeImages') bool includeImages = false,
+  });
+
+  /// Get a single episode by ID.
+  @GET('episode/{id}')
+  Future<SonarrEpisode> getEpisode({
+    @Path('id') required int id,
+  });
+
+  /// Update an existing episode.
+  @PUT('episode/{id}')
+  Future<SonarrEpisode> updateEpisode({
+    @Path('id') required int id,
+    @Body() required SonarrEpisode episode,
+  });
+
+  /// Bulk update a group of episodes
+  @PUT('episode/monitor')
+  Future<List<SonarrEpisode>> updateEpisodes({
+    @Body() required SonarrEpisodeUpdate update,
+  });
+
   /// Get details about directories and files in the filesystem.
   @GET('filesystem')
   Future<SonarrFileSystem> getFileSystem({
