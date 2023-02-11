@@ -9,6 +9,7 @@ export 'src/models/config/naming.dart';
 export 'src/models/config/naming_examples.dart';
 export 'src/models/config/ui.dart';
 export 'src/models/custom_format/custom_format.dart';
+export 'src/models/custom_format/schema.dart';
 export 'src/models/custom_format/specification.dart';
 export 'src/models/delay_profile/delay_profile.dart';
 export 'src/models/disk_space/disk_space.dart';

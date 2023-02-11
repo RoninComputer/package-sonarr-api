@@ -13,7 +13,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - Calendar
 - Command
 - CustomFilter
-- CustomFormat
 - Cutoff
 - DownloadClient
 - EpisodeFile

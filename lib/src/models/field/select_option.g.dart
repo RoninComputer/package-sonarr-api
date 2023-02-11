@@ -13,7 +13,7 @@ _$_SonarrFieldSelectOption _$$_SonarrFieldSelectOptionFromJson(
       name: json['name'] as String?,
       order: json['order'] as int,
       hint: json['hint'] as String?,
-      dividerAfter: json['dividerAfter'] as bool,
+      dividerAfter: json['dividerAfter'] as bool?,
     );
 
 Map<String, dynamic> _$$_SonarrFieldSelectOptionToJson(
@@ -31,6 +31,6 @@ Map<String, dynamic> _$$_SonarrFieldSelectOptionToJson(
   writeNotNull('name', instance.name);
   val['order'] = instance.order;
   writeNotNull('hint', instance.hint);
-  val['dividerAfter'] = instance.dividerAfter;
+  writeNotNull('dividerAfter', instance.dividerAfter);
   return val;
 }

@@ -12,7 +12,7 @@ class SonarrFieldSelectOption
     String? name,
     required int order,
     String? hint,
-    required bool dividerAfter,
+    bool? dividerAfter,
   }) = _SonarrFieldSelectOption;
 
   factory SonarrFieldSelectOption.fromJson(Map<String, Object?> json) =>

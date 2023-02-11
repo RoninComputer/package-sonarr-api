@@ -100,6 +100,39 @@ abstract class SonarrAPI {
     @Body() required SonarrUiConfig config,
   });
 
+  /// Get a list of all created custom formats.
+  @GET('customformat')
+  Future<List<SonarrCustomFormat>> getCustomFormats();
+
+  /// Create a new custom format.
+  @POST('customformat')
+  Future<SonarrCustomFormat> createCustomFormat({
+    @Body() required SonarrCustomFormat format,
+  });
+
+  /// Get a single custom format by ID.
+  @GET('customformat/{id}')
+  Future<SonarrCustomFormat> getCustomFormat({
+    @Path('id') required int id,
+  });
+
+  /// Update a custom format.
+  @PUT('customformat/{id}')
+  Future<SonarrCustomFormat> updateCustomFormat({
+    @Path('id') required int id,
+    @Body() required SonarrCustomFormat format,
+  });
+
+  /// Get all schemas for the available custom formats.
+  @GET('customformat/schema')
+  Future<List<SonarrCustomFormatSchema>> getCustomFormatSchemas();
+
+  /// Delete a custom format.
+  @DELETE('customformat/{id}')
+  Future<void> deleteCustomFormat({
+    @Path('id') required int id,
+  });
+
   /// Get a list of disk spaces.
   @GET('diskspace')
   Future<List<SonarrDiskSpace>> getDiskSpace();
