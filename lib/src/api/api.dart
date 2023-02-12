@@ -314,6 +314,16 @@ abstract class SonarrAPI {
     @Body() required SonarrIndexer indexer,
   });
 
+  /// Get a list of all available languages.
+  @GET('language')
+  Future<List<SonarrLanguage>> getLanguages();
+
+  /// Get a single language by ID.
+  @GET('language/{id}')
+  Future<SonarrLanguage> getLanguage({
+    @Path('id') required int id,
+  });
+
   /// Get a list of all added language profiles.
   @Deprecated('No longer used in Sonarr v4+')
   @GET('languageprofile')
