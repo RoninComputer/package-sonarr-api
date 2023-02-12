@@ -19,6 +19,27 @@ abstract class SonarrAPI {
     return _SonarrAPI(dio);
   }
 
+  /// Get all entries from the blocklist.
+  @GET('blocklist')
+  Future<SonarrPagedResult<SonarrBlocklist>> getBlocklist({
+    @Query('page') int? page,
+    @Query('pageSize') int? pageSize,
+    @Query('sortKey') String? sortKey,
+    @Query('sortDirection') SonarrSortDirection? sortDirection,
+  });
+
+  /// Delete a blocklist item.
+  @DELETE('blocklist/{id}')
+  Future<void> deleteBlocklistItem({
+    @Path('id') required int id,
+  });
+
+  /// Delete a blocklist item.
+  @DELETE('blocklist/bulk')
+  Future<void> deleteBlocklistItems({
+    @Body() required SonarrBlocklistBulk bulkList,
+  });
+
   /// Get the download client configuration.
   @GET('config/downloadclient')
   Future<SonarrDownloadClientConfig> getDownloadClientConfig();

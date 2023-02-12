@@ -1,6 +1,8 @@
 library models;
 
 export 'src/models/backup/backup.dart';
+export 'src/models/blocklist/blocklist.dart';
+export 'src/models/blocklist/bulk.dart';
 export 'src/models/config/download_client.dart';
 export 'src/models/config/host.dart';
 export 'src/models/config/indexer.dart';
