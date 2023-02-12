@@ -572,6 +572,12 @@ abstract class SonarrAPI {
     @Query('addImportListExclusion') bool? addImportListExclusion,
   });
 
+  /// Lookup a list of series by term.
+  @GET('series/lookup')
+  Future<List<SonarrSeries>> lookupSeries({
+    @Query('term') required String term,
+  });
+
   /// Get a list of all system backups.
   @GET('system/backup')
   Future<List<SonarrBackup>> getBackups();
