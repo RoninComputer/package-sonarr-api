@@ -1,3 +1,8 @@
+# 0.0.1-pre.7
+
+- support /episodefile/[id|bulk|editor] support
+- support /qualityprofile/[id|schema] support
+
 # 0.0.1-pre.6
 
 - support /customformat/[id|schema] support
