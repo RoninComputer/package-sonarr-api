@@ -20,8 +20,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - ImportList
 - ImportListExclusion
 - Language
-- LanguageProfile
-- LanguageProfileSchema
 - ManualImport
 - Metadata
 - Missing

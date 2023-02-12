@@ -29,6 +29,8 @@ export 'src/models/indexer/indexer.dart';
 export 'src/models/indexer/test_result.dart';
 export 'src/models/indexer/validation_failure.dart';
 export 'src/models/language/language.dart';
+export 'src/models/language_profile/item.dart';
+export 'src/models/language_profile/language_profile.dart';
 export 'src/models/log/file.dart';
 export 'src/models/log/log.dart';
 export 'src/models/media_cover/media_cover.dart';

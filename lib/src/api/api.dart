@@ -314,6 +314,45 @@ abstract class SonarrAPI {
     @Body() required SonarrIndexer indexer,
   });
 
+  /// Get a list of all added language profiles.
+  @Deprecated('No longer used in Sonarr v4+')
+  @GET('languageprofile')
+  Future<List<SonarrLanguageProfile>> getLanguageProfiles();
+
+  /// Create a new language profile.
+  @Deprecated('No longer used in Sonarr v4+')
+  @POST('languageprofile')
+  Future<SonarrLanguageProfile> createLanguageProfile({
+    @Body() required SonarrLanguageProfile profile,
+  });
+
+  /// Get a single language profile by ID.
+  @Deprecated('No longer used in Sonarr v4+')
+  @GET('languageprofile/{id}')
+  Future<SonarrLanguageProfile> getLanguageProfile({
+    @Path('id') required int id,
+  });
+
+  /// Update an existing language profile.
+  @Deprecated('No longer used in Sonarr v4+')
+  @PUT('languageprofile/{id}')
+  Future<SonarrLanguageProfile> updateLanguageProfile({
+    @Path('id') required int id,
+    @Body() required SonarrLanguageProfile profile,
+  });
+
+  /// Delete a language profile.
+  @Deprecated('No longer used in Sonarr v4+')
+  @DELETE('languageprofile/{id}')
+  Future<void> deleteLanguageProfile({
+    @Path('id') required int id,
+  });
+
+  /// Get all schemas for the available language profiles.
+  @Deprecated('No longer used in Sonarr v4+')
+  @GET('languageprofile/schema')
+  Future<SonarrLanguageProfile> getLanguageProfileSchema();
+
   /// Get a list of logs.
   @GET('log')
   Future<SonarrPagedResult<SonarrLog>> getLogs({
