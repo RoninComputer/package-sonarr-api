@@ -60,6 +60,8 @@ final config = SonarrConfig(
 final api = SonarrAPI(config);
 ```
 
+> You can optionally pass in a Dio `BaseOptions` instance to the configuration to customize the HTTP client. Note that the `baseUrl` property will be overwritten with the given `host` property in the configuration.
+
 And you are ready to make API calls!
 
 ```dart

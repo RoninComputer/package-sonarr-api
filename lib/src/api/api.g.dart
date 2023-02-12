@@ -77,25 +77,27 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteBlocklistItems({required options}) async {
+  Future<HttpResponse<void>> deleteBlocklistItems({required options}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(options.toJson());
-    await _dio.fetch<void>(_setStreamType<void>(Options(
+    final _result =
+        await _dio.fetch<void>(_setStreamType<HttpResponse<void>>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          'blocklist/bulk',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
+            .compose(
+              _dio.options,
+              'blocklist/bulk',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final httpResponse = HttpResponse(null, _result);
+    return httpResponse;
   }
 
   @override
@@ -1022,7 +1024,8 @@ class _SonarrAPI implements SonarrAPI {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = options;
+    final _data = <String, dynamic>{};
+    _data.addAll(options.toJson());
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'DELETE',
       headers: _headers,
@@ -1043,7 +1046,8 @@ class _SonarrAPI implements SonarrAPI {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = options;
+    final _data = <String, dynamic>{};
+    _data.addAll(options.toJson());
     final _result = await _dio
         .fetch<List<dynamic>>(_setStreamType<List<SonarrEpisodeFile>>(Options(
       method: 'PUT',

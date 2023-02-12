@@ -22,7 +22,8 @@ SonarrConfig _$SonarrConfigFromJson(Map<String, dynamic> json) {
 mixin _$SonarrConfig {
   String get host => throw _privateConstructorUsedError;
   String get apiKey => throw _privateConstructorUsedError;
-  Map<String, dynamic>? get headers => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  BaseOptions? get options => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,10 @@ abstract class $SonarrConfigCopyWith<$Res> {
           SonarrConfig value, $Res Function(SonarrConfig) then) =
       _$SonarrConfigCopyWithImpl<$Res, SonarrConfig>;
   @useResult
-  $Res call({String host, String apiKey, Map<String, dynamic>? headers});
+  $Res call(
+      {String host,
+      String apiKey,
+      @JsonKey(ignore: true) BaseOptions? options});
 }
 
 /// @nodoc
@@ -54,7 +58,7 @@ class _$SonarrConfigCopyWithImpl<$Res, $Val extends SonarrConfig>
   $Res call({
     Object? host = null,
     Object? apiKey = null,
-    Object? headers = freezed,
+    Object? options = freezed,
   }) {
     return _then(_value.copyWith(
       host: null == host
@@ -65,10 +69,10 @@ class _$SonarrConfigCopyWithImpl<$Res, $Val extends SonarrConfig>
           ? _value.apiKey
           : apiKey // ignore: cast_nullable_to_non_nullable
               as String,
-      headers: freezed == headers
-          ? _value.headers
-          : headers // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
+      options: freezed == options
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as BaseOptions?,
     ) as $Val);
   }
 }
@@ -81,7 +85,10 @@ abstract class _$$_SonarrConfigCopyWith<$Res>
       __$$_SonarrConfigCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String host, String apiKey, Map<String, dynamic>? headers});
+  $Res call(
+      {String host,
+      String apiKey,
+      @JsonKey(ignore: true) BaseOptions? options});
 }
 
 /// @nodoc
@@ -97,7 +104,7 @@ class __$$_SonarrConfigCopyWithImpl<$Res>
   $Res call({
     Object? host = null,
     Object? apiKey = null,
-    Object? headers = freezed,
+    Object? options = freezed,
   }) {
     return _then(_$_SonarrConfig(
       host: null == host
@@ -108,10 +115,10 @@ class __$$_SonarrConfigCopyWithImpl<$Res>
           ? _value.apiKey
           : apiKey // ignore: cast_nullable_to_non_nullable
               as String,
-      headers: freezed == headers
-          ? _value._headers
-          : headers // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
+      options: freezed == options
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as BaseOptions?,
     ));
   }
 }
@@ -122,9 +129,8 @@ class _$_SonarrConfig extends _SonarrConfig {
   const _$_SonarrConfig(
       {required this.host,
       required this.apiKey,
-      final Map<String, dynamic>? headers})
-      : _headers = headers,
-        super._();
+      @JsonKey(ignore: true) this.options})
+      : super._();
 
   factory _$_SonarrConfig.fromJson(Map<String, dynamic> json) =>
       _$$_SonarrConfigFromJson(json);
@@ -133,19 +139,13 @@ class _$_SonarrConfig extends _SonarrConfig {
   final String host;
   @override
   final String apiKey;
-  final Map<String, dynamic>? _headers;
   @override
-  Map<String, dynamic>? get headers {
-    final value = _headers;
-    if (value == null) return null;
-    if (_headers is EqualUnmodifiableMapView) return _headers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
-  }
+  @JsonKey(ignore: true)
+  final BaseOptions? options;
 
   @override
   String toString() {
-    return 'SonarrConfig(host: $host, apiKey: $apiKey, headers: $headers)';
+    return 'SonarrConfig(host: $host, apiKey: $apiKey, options: $options)';
   }
 
   @override
@@ -155,13 +155,12 @@ class _$_SonarrConfig extends _SonarrConfig {
             other is _$_SonarrConfig &&
             (identical(other.host, host) || other.host == host) &&
             (identical(other.apiKey, apiKey) || other.apiKey == apiKey) &&
-            const DeepCollectionEquality().equals(other._headers, _headers));
+            (identical(other.options, options) || other.options == options));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, host, apiKey, const DeepCollectionEquality().hash(_headers));
+  int get hashCode => Object.hash(runtimeType, host, apiKey, options);
 
   @JsonKey(ignore: true)
   @override
@@ -181,7 +180,7 @@ abstract class _SonarrConfig extends SonarrConfig {
   const factory _SonarrConfig(
       {required final String host,
       required final String apiKey,
-      final Map<String, dynamic>? headers}) = _$_SonarrConfig;
+      @JsonKey(ignore: true) final BaseOptions? options}) = _$_SonarrConfig;
   const _SonarrConfig._() : super._();
 
   factory _SonarrConfig.fromJson(Map<String, dynamic> json) =
@@ -192,7 +191,8 @@ abstract class _SonarrConfig extends SonarrConfig {
   @override
   String get apiKey;
   @override
-  Map<String, dynamic>? get headers;
+  @JsonKey(ignore: true)
+  BaseOptions? get options;
   @override
   @JsonKey(ignore: true)
   _$$_SonarrConfigCopyWith<_$_SonarrConfig> get copyWith =>

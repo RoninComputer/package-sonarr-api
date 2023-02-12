@@ -10,13 +10,7 @@ part 'api.g.dart';
 @RestApi()
 abstract class SonarrAPI {
   factory SonarrAPI(SonarrConfig config) {
-    Dio dio = Dio(BaseOptions(
-      baseUrl: config.baseUrl,
-      queryParameters: {
-        'apikey': config.apiKey,
-      },
-      headers: config.headers,
-    ));
+    Dio dio = Dio(config.baseOptions);
     return _SonarrAPI(dio);
   }
 
@@ -37,7 +31,7 @@ abstract class SonarrAPI {
 
   /// Delete a blocklist item.
   @DELETE('blocklist/bulk')
-  Future<void> deleteBlocklistItems({
+  Future<HttpResponse<void>> deleteBlocklistItems({
     @Body() required SonarrBlocklistBulkOptions options,
   });
 
