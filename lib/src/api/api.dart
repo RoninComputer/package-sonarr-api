@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:sonarr_api/api.dart';
 import 'package:sonarr_api/models.dart';
+import 'package:sonarr_api/src/internal/typedefs/datetime.dart';
 import 'package:sonarr_api/types.dart';
 
 part 'api.g.dart';
@@ -38,6 +39,17 @@ abstract class SonarrAPI {
   @DELETE('blocklist/bulk')
   Future<void> deleteBlocklistItems({
     @Body() required SonarrBlocklistBulk bulkList,
+  });
+
+  /// Get items from the calendar.
+  @GET('calendar')
+  Future<List<SonarrEpisode>> getCalendar({
+    @Query('unmonitored') bool? unmonitored,
+    @Query('includeSeries') bool? includeSeries,
+    @Query('includeEpisodeFile') bool? includeEpisodeFile,
+    @Query('includeEpisodeImages') bool? includeEpisodeImages,
+    @Query('end') SonarrDateTime? endDate,
+    @Query('start') SonarrDateTime? startDate,
   });
 
   /// Get the download client configuration.

@@ -99,6 +99,46 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
+  Future<List<SonarrEpisode>> getCalendar({
+    unmonitored,
+    includeSeries,
+    includeEpisodeFile,
+    includeEpisodeImages,
+    endDate,
+    startDate,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'unmonitored': unmonitored,
+      r'includeSeries': includeSeries,
+      r'includeEpisodeFile': includeEpisodeFile,
+      r'includeEpisodeImages': includeEpisodeImages,
+      r'end': endDate?.toJson(),
+      r'start': startDate?.toJson(),
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<List<dynamic>>(_setStreamType<List<SonarrEpisode>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'calendar',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => SonarrEpisode.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
   Future<SonarrDownloadClientConfig> getDownloadClientConfig() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
