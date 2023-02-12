@@ -1,3 +1,11 @@
+# 0.0.1-pre.8
+
+- support /blocklist/[id|bulk] endpoint
+- support /calendar endpoint
+- support /language/[id] endpoint
+- support /languageprofile/[id|schema] support
+- support /series/lookup endpoint
+
 # 0.0.1-pre.7
 
 - support /episodefile/[id|bulk|editor] support
