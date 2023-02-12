@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sonarr_api/src/internal/mixins/serializable.dart';
-import 'package:sonarr_api/src/models/episode/file.dart';
+import 'package:sonarr_api/src/models/episode_file/episode_file.dart';
 import 'package:sonarr_api/src/models/media_cover/media_cover.dart';
 import 'package:sonarr_api/src/models/series/series.dart';
 

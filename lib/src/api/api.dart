@@ -168,7 +168,7 @@ abstract class SonarrAPI {
 
   /// Get a list of episodes.
   ///
-  /// One of `seriesId` or `seasonNumber` are required.
+  /// One of `seriesId`, `seasonNumber`, or `episodeIds` are required.
   @GET('episode')
   Future<List<SonarrEpisode>> getEpisodes({
     @Query('seriesId') int? seriesId,
@@ -195,6 +195,52 @@ abstract class SonarrAPI {
   @PUT('episode/monitor')
   Future<List<SonarrEpisode>> updateEpisodes({
     @Body() required SonarrEpisodeUpdate update,
+  });
+
+  /// Get a list of episode files.
+  ///
+  /// One of `seriesId` or `episodeFileIds` are required.
+  @GET('episodefile')
+  Future<List<SonarrEpisodeFile>> getEpisodeFiles({
+    @Query('seriesId') int? seriesId,
+    @Query('episodeFileIds') List<int>? episodeFileIds,
+  });
+
+  /// Get a single episode file by ID.
+  @GET('episodefile/{id}')
+  Future<SonarrEpisodeFile> getEpisodeFile({
+    @Path('id') required int id,
+  });
+
+  /// Update an episode file.
+  @PUT('episodefile/{id}')
+  Future<SonarrEpisodeFile> updateEpisodeFile({
+    @Path('id') required int id,
+    @Body() required SonarrEpisodeFile file,
+  });
+
+  /// Delete an episode file.
+  @DELETE('episodefile/{id}')
+  Future<void> deleteEpisodeFile({
+    @Path('id') required int id,
+  });
+
+  /// Update a group of episode files.
+  @PUT('episodefile/bulk')
+  Future<List<SonarrEpisodeFile>> updateEpisodeFiles({
+    @Body() required List<SonarrEpisodeFile> files,
+  });
+
+  /// Delete a group of episode files.
+  @DELETE('episodefile/bulk')
+  Future<void> deleteEpisodeFiles({
+    @Body() required SonarrEpisodeFileList fileList,
+  });
+
+  /// Edit (editor-style) a group of episode files.
+  @PUT('episodefile/editor')
+  Future<List<SonarrEpisodeFile>> editEpisodeFiles({
+    @Body() required SonarrEpisodeFileList fileList,
   });
 
   /// Get details about directories and files in the filesystem.

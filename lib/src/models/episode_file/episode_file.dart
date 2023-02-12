@@ -5,8 +5,8 @@ import 'package:sonarr_api/src/models/language/language.dart';
 import 'package:sonarr_api/src/models/media_info/media_info.dart';
 import 'package:sonarr_api/src/models/quality/model.dart';
 
-part 'file.freezed.dart';
-part 'file.g.dart';
+part 'episode_file.freezed.dart';
+part 'episode_file.g.dart';
 
 @Freezed()
 class SonarrEpisodeFile with _$SonarrEpisodeFile, JsonSerializableMixin {

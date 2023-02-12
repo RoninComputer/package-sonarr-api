@@ -15,7 +15,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - CustomFilter
 - Cutoff
 - DownloadClient
-- EpisodeFile
 - Health
 - History
 - ImportList
