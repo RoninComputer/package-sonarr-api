@@ -77,12 +77,12 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteBlocklistItems({required bulkList}) async {
+  Future<void> deleteBlocklistItems({required options}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(bulkList.toJson());
+    _data.addAll(options.toJson());
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'DELETE',
       headers: _headers,
@@ -862,12 +862,12 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrEpisode>> updateEpisodes({required update}) async {
+  Future<List<SonarrEpisode>> updateEpisodes({required options}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(update.toJson());
+    _data.addAll(options.toJson());
     final _result = await _dio
         .fetch<List<dynamic>>(_setStreamType<List<SonarrEpisode>>(Options(
       method: 'PUT',
@@ -1018,12 +1018,11 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteEpisodeFiles({required fileList}) async {
+  Future<void> deleteEpisodeFiles({required options}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(fileList.toJson());
+    final _data = options;
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'DELETE',
       headers: _headers,
@@ -1040,12 +1039,11 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrEpisodeFile>> editEpisodeFiles({required fileList}) async {
+  Future<List<SonarrEpisodeFile>> editEpisodeFiles({required options}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(fileList.toJson());
+    final _data = options;
     final _result = await _dio
         .fetch<List<dynamic>>(_setStreamType<List<SonarrEpisodeFile>>(Options(
       method: 'PUT',

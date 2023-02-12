@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'update.dart';
+part of 'update_options.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SonarrEpisodeUpdate _$$_SonarrEpisodeUpdateFromJson(
+_$_SonarrEpisodeUpdateOptions _$$_SonarrEpisodeUpdateOptionsFromJson(
         Map<String, dynamic> json) =>
-    _$_SonarrEpisodeUpdate(
+    _$_SonarrEpisodeUpdateOptions(
       episodeIds:
           (json['episodeIds'] as List<dynamic>).map((e) => e as int).toList(),
       monitored: json['monitored'] as bool,
     );
 
-Map<String, dynamic> _$$_SonarrEpisodeUpdateToJson(
-        _$_SonarrEpisodeUpdate instance) =>
+Map<String, dynamic> _$$_SonarrEpisodeUpdateOptionsToJson(
+        _$_SonarrEpisodeUpdateOptions instance) =>
     <String, dynamic>{
       'episodeIds': instance.episodeIds,
       'monitored': instance.monitored,

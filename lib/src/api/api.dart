@@ -38,7 +38,7 @@ abstract class SonarrAPI {
   /// Delete a blocklist item.
   @DELETE('blocklist/bulk')
   Future<void> deleteBlocklistItems({
-    @Body() required SonarrBlocklistBulk bulkList,
+    @Body() required SonarrBlocklistBulkOptions options,
   });
 
   /// Get items from the calendar.
@@ -227,7 +227,7 @@ abstract class SonarrAPI {
   /// Bulk update a group of episodes
   @PUT('episode/monitor')
   Future<List<SonarrEpisode>> updateEpisodes({
-    @Body() required SonarrEpisodeUpdate update,
+    @Body() required SonarrEpisodeUpdateOptions options,
   });
 
   /// Get a list of episode files.
@@ -267,13 +267,13 @@ abstract class SonarrAPI {
   /// Delete a group of episode files.
   @DELETE('episodefile/bulk')
   Future<void> deleteEpisodeFiles({
-    @Body() required SonarrEpisodeFileList fileList,
+    @Body() required SonarrEpisodeEditorOptions options,
   });
 
   /// Edit (editor-style) a group of episode files.
   @PUT('episodefile/editor')
   Future<List<SonarrEpisodeFile>> editEpisodeFiles({
-    @Body() required SonarrEpisodeFileList fileList,
+    @Body() required SonarrEpisodeEditorOptions options,
   });
 
   /// Get details about directories and files in the filesystem.

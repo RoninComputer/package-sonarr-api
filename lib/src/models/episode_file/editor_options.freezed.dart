@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'list.dart';
+part of 'editor_options.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,13 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-SonarrEpisodeFileList _$SonarrEpisodeFileListFromJson(
+SonarrEpisodeEditorOptions _$SonarrEpisodeEditorOptionsFromJson(
     Map<String, dynamic> json) {
-  return _SonarrEpisodeFileList.fromJson(json);
+  return _SonarrEpisodeEditorOptions.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SonarrEpisodeFileList {
+mixin _$SonarrEpisodeEditorOptions {
   List<int> get episodeFileIds => throw _privateConstructorUsedError;
   List<SonarrLanguage>? get languages => throw _privateConstructorUsedError;
   SonarrQualityModel? get quality => throw _privateConstructorUsedError;
@@ -29,15 +29,16 @@ mixin _$SonarrEpisodeFileList {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SonarrEpisodeFileListCopyWith<SonarrEpisodeFileList> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SonarrEpisodeEditorOptionsCopyWith<SonarrEpisodeEditorOptions>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SonarrEpisodeFileListCopyWith<$Res> {
-  factory $SonarrEpisodeFileListCopyWith(SonarrEpisodeFileList value,
-          $Res Function(SonarrEpisodeFileList) then) =
-      _$SonarrEpisodeFileListCopyWithImpl<$Res, SonarrEpisodeFileList>;
+abstract class $SonarrEpisodeEditorOptionsCopyWith<$Res> {
+  factory $SonarrEpisodeEditorOptionsCopyWith(SonarrEpisodeEditorOptions value,
+          $Res Function(SonarrEpisodeEditorOptions) then) =
+      _$SonarrEpisodeEditorOptionsCopyWithImpl<$Res,
+          SonarrEpisodeEditorOptions>;
   @useResult
   $Res call(
       {List<int> episodeFileIds,
@@ -50,10 +51,10 @@ abstract class $SonarrEpisodeFileListCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SonarrEpisodeFileListCopyWithImpl<$Res,
-        $Val extends SonarrEpisodeFileList>
-    implements $SonarrEpisodeFileListCopyWith<$Res> {
-  _$SonarrEpisodeFileListCopyWithImpl(this._value, this._then);
+class _$SonarrEpisodeEditorOptionsCopyWithImpl<$Res,
+        $Val extends SonarrEpisodeEditorOptions>
+    implements $SonarrEpisodeEditorOptionsCopyWith<$Res> {
+  _$SonarrEpisodeEditorOptionsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -107,11 +108,12 @@ class _$SonarrEpisodeFileListCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SonarrEpisodeFileListCopyWith<$Res>
-    implements $SonarrEpisodeFileListCopyWith<$Res> {
-  factory _$$_SonarrEpisodeFileListCopyWith(_$_SonarrEpisodeFileList value,
-          $Res Function(_$_SonarrEpisodeFileList) then) =
-      __$$_SonarrEpisodeFileListCopyWithImpl<$Res>;
+abstract class _$$_SonarrEpisodeEditorOptionsCopyWith<$Res>
+    implements $SonarrEpisodeEditorOptionsCopyWith<$Res> {
+  factory _$$_SonarrEpisodeEditorOptionsCopyWith(
+          _$_SonarrEpisodeEditorOptions value,
+          $Res Function(_$_SonarrEpisodeEditorOptions) then) =
+      __$$_SonarrEpisodeEditorOptionsCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,11 +128,13 @@ abstract class _$$_SonarrEpisodeFileListCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SonarrEpisodeFileListCopyWithImpl<$Res>
-    extends _$SonarrEpisodeFileListCopyWithImpl<$Res, _$_SonarrEpisodeFileList>
-    implements _$$_SonarrEpisodeFileListCopyWith<$Res> {
-  __$$_SonarrEpisodeFileListCopyWithImpl(_$_SonarrEpisodeFileList _value,
-      $Res Function(_$_SonarrEpisodeFileList) _then)
+class __$$_SonarrEpisodeEditorOptionsCopyWithImpl<$Res>
+    extends _$SonarrEpisodeEditorOptionsCopyWithImpl<$Res,
+        _$_SonarrEpisodeEditorOptions>
+    implements _$$_SonarrEpisodeEditorOptionsCopyWith<$Res> {
+  __$$_SonarrEpisodeEditorOptionsCopyWithImpl(
+      _$_SonarrEpisodeEditorOptions _value,
+      $Res Function(_$_SonarrEpisodeEditorOptions) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -142,7 +146,7 @@ class __$$_SonarrEpisodeFileListCopyWithImpl<$Res>
     Object? sceneName = freezed,
     Object? releaseGroup = freezed,
   }) {
-    return _then(_$_SonarrEpisodeFileList(
+    return _then(_$_SonarrEpisodeEditorOptions(
       episodeFileIds: null == episodeFileIds
           ? _value._episodeFileIds
           : episodeFileIds // ignore: cast_nullable_to_non_nullable
@@ -169,8 +173,8 @@ class __$$_SonarrEpisodeFileListCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SonarrEpisodeFileList implements _SonarrEpisodeFileList {
-  const _$_SonarrEpisodeFileList(
+class _$_SonarrEpisodeEditorOptions implements _SonarrEpisodeEditorOptions {
+  const _$_SonarrEpisodeEditorOptions(
       {required final List<int> episodeFileIds,
       final List<SonarrLanguage>? languages,
       this.quality,
@@ -179,8 +183,8 @@ class _$_SonarrEpisodeFileList implements _SonarrEpisodeFileList {
       : _episodeFileIds = episodeFileIds,
         _languages = languages;
 
-  factory _$_SonarrEpisodeFileList.fromJson(Map<String, dynamic> json) =>
-      _$$_SonarrEpisodeFileListFromJson(json);
+  factory _$_SonarrEpisodeEditorOptions.fromJson(Map<String, dynamic> json) =>
+      _$$_SonarrEpisodeEditorOptionsFromJson(json);
 
   final List<int> _episodeFileIds;
   @override
@@ -209,14 +213,14 @@ class _$_SonarrEpisodeFileList implements _SonarrEpisodeFileList {
 
   @override
   String toString() {
-    return 'SonarrEpisodeFileList(episodeFileIds: $episodeFileIds, languages: $languages, quality: $quality, sceneName: $sceneName, releaseGroup: $releaseGroup)';
+    return 'SonarrEpisodeEditorOptions(episodeFileIds: $episodeFileIds, languages: $languages, quality: $quality, sceneName: $sceneName, releaseGroup: $releaseGroup)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SonarrEpisodeFileList &&
+            other is _$_SonarrEpisodeEditorOptions &&
             const DeepCollectionEquality()
                 .equals(other._episodeFileIds, _episodeFileIds) &&
             const DeepCollectionEquality()
@@ -241,28 +245,29 @@ class _$_SonarrEpisodeFileList implements _SonarrEpisodeFileList {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SonarrEpisodeFileListCopyWith<_$_SonarrEpisodeFileList> get copyWith =>
-      __$$_SonarrEpisodeFileListCopyWithImpl<_$_SonarrEpisodeFileList>(
-          this, _$identity);
+  _$$_SonarrEpisodeEditorOptionsCopyWith<_$_SonarrEpisodeEditorOptions>
+      get copyWith => __$$_SonarrEpisodeEditorOptionsCopyWithImpl<
+          _$_SonarrEpisodeEditorOptions>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SonarrEpisodeFileListToJson(
+    return _$$_SonarrEpisodeEditorOptionsToJson(
       this,
     );
   }
 }
 
-abstract class _SonarrEpisodeFileList implements SonarrEpisodeFileList {
-  const factory _SonarrEpisodeFileList(
+abstract class _SonarrEpisodeEditorOptions
+    implements SonarrEpisodeEditorOptions {
+  const factory _SonarrEpisodeEditorOptions(
       {required final List<int> episodeFileIds,
       final List<SonarrLanguage>? languages,
       final SonarrQualityModel? quality,
       final String? sceneName,
-      final String? releaseGroup}) = _$_SonarrEpisodeFileList;
+      final String? releaseGroup}) = _$_SonarrEpisodeEditorOptions;
 
-  factory _SonarrEpisodeFileList.fromJson(Map<String, dynamic> json) =
-      _$_SonarrEpisodeFileList.fromJson;
+  factory _SonarrEpisodeEditorOptions.fromJson(Map<String, dynamic> json) =
+      _$_SonarrEpisodeEditorOptions.fromJson;
 
   @override
   List<int> get episodeFileIds;
@@ -276,6 +281,6 @@ abstract class _SonarrEpisodeFileList implements SonarrEpisodeFileList {
   String? get releaseGroup;
   @override
   @JsonKey(ignore: true)
-  _$$_SonarrEpisodeFileListCopyWith<_$_SonarrEpisodeFileList> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SonarrEpisodeEditorOptionsCopyWith<_$_SonarrEpisodeEditorOptions>
+      get copyWith => throw _privateConstructorUsedError;
 }

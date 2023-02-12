@@ -1,19 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'bulk.dart';
+part of 'bulk_options.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SonarrBlocklistBulk _$$_SonarrBlocklistBulkFromJson(
+_$_SonarrBlocklistBulkOptions _$$_SonarrBlocklistBulkOptionsFromJson(
         Map<String, dynamic> json) =>
-    _$_SonarrBlocklistBulk(
+    _$_SonarrBlocklistBulkOptions(
       ids: (json['ids'] as List<dynamic>).map((e) => e as int).toList(),
     );
 
-Map<String, dynamic> _$$_SonarrBlocklistBulkToJson(
-        _$_SonarrBlocklistBulk instance) =>
+Map<String, dynamic> _$$_SonarrBlocklistBulkOptionsToJson(
+        _$_SonarrBlocklistBulkOptions instance) =>
     <String, dynamic>{
       'ids': instance.ids,
     };

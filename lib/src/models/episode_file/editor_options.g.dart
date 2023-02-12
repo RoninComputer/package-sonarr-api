@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'list.dart';
+part of 'editor_options.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SonarrEpisodeFileList _$$_SonarrEpisodeFileListFromJson(
+_$_SonarrEpisodeEditorOptions _$$_SonarrEpisodeEditorOptionsFromJson(
         Map<String, dynamic> json) =>
-    _$_SonarrEpisodeFileList(
+    _$_SonarrEpisodeEditorOptions(
       episodeFileIds: (json['episodeFileIds'] as List<dynamic>)
           .map((e) => e as int)
           .toList(),
@@ -23,8 +23,8 @@ _$_SonarrEpisodeFileList _$$_SonarrEpisodeFileListFromJson(
       releaseGroup: json['releaseGroup'] as String?,
     );
 
-Map<String, dynamic> _$$_SonarrEpisodeFileListToJson(
-    _$_SonarrEpisodeFileList instance) {
+Map<String, dynamic> _$$_SonarrEpisodeEditorOptionsToJson(
+    _$_SonarrEpisodeEditorOptions instance) {
   final val = <String, dynamic>{
     'episodeFileIds': instance.episodeFileIds,
   };
