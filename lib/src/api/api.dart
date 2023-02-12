@@ -324,6 +324,39 @@ abstract class SonarrAPI {
     @Path('size') required SonarrImageSizePoster size,
   });
 
+  /// Get a list of all added quality profiles.
+  @GET('qualityprofile')
+  Future<List<SonarrQualityProfile>> getQualityProfiles();
+
+  /// Create a new quality profile.
+  @POST('qualityprofile')
+  Future<SonarrQualityProfile> createQualityProfile({
+    @Body() required SonarrQualityProfile profile,
+  });
+
+  /// Get a single quality profile by ID.
+  @GET('qualityprofile/{id}')
+  Future<SonarrQualityProfile> getQualityProfile({
+    @Path('id') required int id,
+  });
+
+  /// Update an existing quality profile.
+  @PUT('qualityprofile/{id}')
+  Future<SonarrQualityProfile> updateQualityProfile({
+    @Path('id') required int id,
+    @Body() required SonarrQualityProfile profile,
+  });
+
+  /// Delete a quality profile.
+  @DELETE('qualityprofile/{id}')
+  Future<void> deleteQualityProfile({
+    @Path('id') required int id,
+  });
+
+  /// Get all schemas for the available quality profiles.
+  @GET('qualityprofile/schema')
+  Future<SonarrQualityProfile> getQualityProfileSchema();
+
   /// Get a list of all created release profiles.
   @GET('releaseprofile')
   Future<List<SonarrReleaseProfile>> getReleaseProfiles();

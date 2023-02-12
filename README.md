@@ -29,8 +29,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - Notification
 - Parse
 - QualityDefinition
-- QualityProfile
-- QualityProfileSchema
 - Queue
 - QueueAction
 - QueueDetails
