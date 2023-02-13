@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-// import 'package:sonarr_api/src/models/custom_filter/filter.dart';
+import 'package:sonarr_api/src/models/filter/filter.dart';
 import 'package:sonarr_api/src/types/sort_direction.dart';
 import 'package:sonarr_api/src/internal/mixins/serializable.dart';
 
@@ -16,7 +16,7 @@ class SonarrPagedResult<T extends JsonSerializableMixin>
     required int pageSize,
     String? sortKey,
     required SonarrSortDirection sortDirection,
-    // List<SonarrFilter>? filters,
+    List<SonarrFilter>? filters,
     required int totalRecords,
     required List<T> records,
   }) = _SonarrPagedResult;
@@ -34,7 +34,7 @@ class SonarrPagedResult<T extends JsonSerializableMixin>
       'pageSize': pageSize,
       if (sortKey != null) 'sortKey': sortKey,
       'sortDirection': sortDirection.name,
-      // if (filters != null) 'filters': filters!.map((e) => e.toJson()).toList(),
+      if (filters != null) 'filters': filters!.map((e) => e.toJson()).toList(),
       'totalRecords': totalRecords,
       'records': records.map((e) => e.toJson()).toList(),
     };

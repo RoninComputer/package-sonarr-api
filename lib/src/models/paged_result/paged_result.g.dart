@@ -17,6 +17,9 @@ _$_SonarrPagedResult<T>
           sortKey: json['sortKey'] as String?,
           sortDirection:
               $enumDecode(_$SonarrSortDirectionEnumMap, json['sortDirection']),
+          filters: (json['filters'] as List<dynamic>?)
+              ?.map((e) => SonarrFilter.fromJson(e as Map<String, dynamic>))
+              .toList(),
           totalRecords: json['totalRecords'] as int,
           records: (json['records'] as List<dynamic>).map(fromJsonT).toList(),
         );

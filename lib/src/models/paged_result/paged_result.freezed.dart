@@ -25,8 +25,8 @@ mixin _$SonarrPagedResult<T extends JsonSerializableMixin> {
   int get page => throw _privateConstructorUsedError;
   int get pageSize => throw _privateConstructorUsedError;
   String? get sortKey => throw _privateConstructorUsedError;
-  SonarrSortDirection get sortDirection =>
-      throw _privateConstructorUsedError; // List<SonarrFilter>? filters,
+  SonarrSortDirection get sortDirection => throw _privateConstructorUsedError;
+  List<SonarrFilter>? get filters => throw _privateConstructorUsedError;
   int get totalRecords => throw _privateConstructorUsedError;
   List<T> get records => throw _privateConstructorUsedError;
 
@@ -47,6 +47,7 @@ abstract class $SonarrPagedResultCopyWith<T extends JsonSerializableMixin,
       int pageSize,
       String? sortKey,
       SonarrSortDirection sortDirection,
+      List<SonarrFilter>? filters,
       int totalRecords,
       List<T> records});
 }
@@ -69,6 +70,7 @@ class _$SonarrPagedResultCopyWithImpl<T extends JsonSerializableMixin, $Res,
     Object? pageSize = null,
     Object? sortKey = freezed,
     Object? sortDirection = null,
+    Object? filters = freezed,
     Object? totalRecords = null,
     Object? records = null,
   }) {
@@ -89,6 +91,10 @@ class _$SonarrPagedResultCopyWithImpl<T extends JsonSerializableMixin, $Res,
           ? _value.sortDirection
           : sortDirection // ignore: cast_nullable_to_non_nullable
               as SonarrSortDirection,
+      filters: freezed == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as List<SonarrFilter>?,
       totalRecords: null == totalRecords
           ? _value.totalRecords
           : totalRecords // ignore: cast_nullable_to_non_nullable
@@ -114,6 +120,7 @@ abstract class _$$_SonarrPagedResultCopyWith<T extends JsonSerializableMixin,
       int pageSize,
       String? sortKey,
       SonarrSortDirection sortDirection,
+      List<SonarrFilter>? filters,
       int totalRecords,
       List<T> records});
 }
@@ -133,6 +140,7 @@ class __$$_SonarrPagedResultCopyWithImpl<T extends JsonSerializableMixin, $Res>
     Object? pageSize = null,
     Object? sortKey = freezed,
     Object? sortDirection = null,
+    Object? filters = freezed,
     Object? totalRecords = null,
     Object? records = null,
   }) {
@@ -153,6 +161,10 @@ class __$$_SonarrPagedResultCopyWithImpl<T extends JsonSerializableMixin, $Res>
           ? _value.sortDirection
           : sortDirection // ignore: cast_nullable_to_non_nullable
               as SonarrSortDirection,
+      filters: freezed == filters
+          ? _value._filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as List<SonarrFilter>?,
       totalRecords: null == totalRecords
           ? _value.totalRecords
           : totalRecords // ignore: cast_nullable_to_non_nullable
@@ -174,9 +186,11 @@ class _$_SonarrPagedResult<T extends JsonSerializableMixin>
       required this.pageSize,
       this.sortKey,
       required this.sortDirection,
+      final List<SonarrFilter>? filters,
       required this.totalRecords,
       required final List<T> records})
-      : _records = records,
+      : _filters = filters,
+        _records = records,
         super._();
 
   factory _$_SonarrPagedResult.fromJson(
@@ -191,7 +205,16 @@ class _$_SonarrPagedResult<T extends JsonSerializableMixin>
   final String? sortKey;
   @override
   final SonarrSortDirection sortDirection;
-// List<SonarrFilter>? filters,
+  final List<SonarrFilter>? _filters;
+  @override
+  List<SonarrFilter>? get filters {
+    final value = _filters;
+    if (value == null) return null;
+    if (_filters is EqualUnmodifiableListView) return _filters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final int totalRecords;
   final List<T> _records;
@@ -204,7 +227,7 @@ class _$_SonarrPagedResult<T extends JsonSerializableMixin>
 
   @override
   String toString() {
-    return 'SonarrPagedResult<$T>(page: $page, pageSize: $pageSize, sortKey: $sortKey, sortDirection: $sortDirection, totalRecords: $totalRecords, records: $records)';
+    return 'SonarrPagedResult<$T>(page: $page, pageSize: $pageSize, sortKey: $sortKey, sortDirection: $sortDirection, filters: $filters, totalRecords: $totalRecords, records: $records)';
   }
 
   @override
@@ -218,6 +241,7 @@ class _$_SonarrPagedResult<T extends JsonSerializableMixin>
             (identical(other.sortKey, sortKey) || other.sortKey == sortKey) &&
             (identical(other.sortDirection, sortDirection) ||
                 other.sortDirection == sortDirection) &&
+            const DeepCollectionEquality().equals(other._filters, _filters) &&
             (identical(other.totalRecords, totalRecords) ||
                 other.totalRecords == totalRecords) &&
             const DeepCollectionEquality().equals(other._records, _records));
@@ -231,6 +255,7 @@ class _$_SonarrPagedResult<T extends JsonSerializableMixin>
       pageSize,
       sortKey,
       sortDirection,
+      const DeepCollectionEquality().hash(_filters),
       totalRecords,
       const DeepCollectionEquality().hash(_records));
 
@@ -249,6 +274,7 @@ abstract class _SonarrPagedResult<T extends JsonSerializableMixin>
       required final int pageSize,
       final String? sortKey,
       required final SonarrSortDirection sortDirection,
+      final List<SonarrFilter>? filters,
       required final int totalRecords,
       required final List<T> records}) = _$_SonarrPagedResult<T>;
   const _SonarrPagedResult._() : super._();
@@ -265,7 +291,9 @@ abstract class _SonarrPagedResult<T extends JsonSerializableMixin>
   String? get sortKey;
   @override
   SonarrSortDirection get sortDirection;
-  @override // List<SonarrFilter>? filters,
+  @override
+  List<SonarrFilter>? get filters;
+  @override
   int get totalRecords;
   @override
   List<T> get records;

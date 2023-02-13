@@ -127,6 +127,35 @@ abstract class SonarrAPI {
     @Body() required SonarrUiConfig config,
   });
 
+  /// Get a list of all created custom filters.
+  @GET('customfilter')
+  Future<List<SonarrCustomFilter>> getCustomFilters();
+
+  /// Create a new custom filter.
+  @POST('customfilter')
+  Future<SonarrCustomFilter> createCustomFilter({
+    @Body() required SonarrCustomFilter filter,
+  });
+
+  /// Get a single custom filter by ID.
+  @GET('customfilter/{id}')
+  Future<SonarrCustomFilter> getCustomFilter({
+    @Path('id') required int id,
+  });
+
+  /// Update a custom filter.
+  @PUT('customfilter/{id}')
+  Future<SonarrCustomFilter> updateCustomFilter({
+    @Path('id') required int id,
+    @Body() required SonarrCustomFilter filter,
+  });
+
+  /// Delete a custom filter.
+  @DELETE('customfilter/{id}')
+  Future<void> deleteCustomFilter({
+    @Path('id') required int id,
+  });
+
   /// Get a list of all created custom formats.
   @GET('customformat')
   Future<List<SonarrCustomFormat>> getCustomFormats();
