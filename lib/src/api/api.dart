@@ -320,6 +320,45 @@ abstract class SonarrAPI {
     @Query('path') required String path,
   });
 
+  /// Get a list of history entries.
+  @GET('history')
+  Future<SonarrPagedResult<SonarrHistory>> getHistory({
+    @Query('page') int? page,
+    @Query('pageSize') int? pageSize,
+    @Query('sortKey') String? sortKey,
+    @Query('sortDirection') SonarrSortDirection? sortDirection,
+    @Query('includeSeries') bool? includeSeries = false,
+    @Query('includeEpisode') bool? includeEpisode = false,
+    @Query('eventType') int? eventType,
+    @Query('downloadId') String? downloadId,
+    @Query('episodeId') int? episodeId,
+  });
+
+  /// Get all history for a given series by ID.
+  @GET('history/series')
+  Future<List<SonarrHistory>> getSeriesHistory({
+    @Query('seriesId') required int seriesId,
+    @Query('seasonNumber') int? seasonNumber,
+    @Query('eventType') SonarrHistoryEventType? eventType,
+    @Query('includeSeries') bool? includeSeries = false,
+    @Query('includeEpisode') bool? includeEpisode = false,
+  });
+
+  /// Get all history since the date given.
+  @GET('history/since')
+  Future<List<SonarrHistory>> getHistorySince({
+    @Query('date') required SonarrDateTime date,
+    @Query('eventType') SonarrHistoryEventType? eventType,
+    @Query('includeSeries') bool? includeSeries = false,
+    @Query('includeEpisode') bool? includeEpisode = false,
+  });
+
+  /// Mark a history entry as failed.
+  @POST('history/failed/{id}')
+  Future<void> markHistoryAsFailed({
+    @Path('id') required int id,
+  });
+
   /// Get a list of all added indexers.
   @GET('indexer')
   Future<List<SonarrIndexer>> getIndexers();

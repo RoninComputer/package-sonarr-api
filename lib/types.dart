@@ -12,6 +12,7 @@ export 'src/types/file_date_type.dart';
 export 'src/types/file_system_entity.dart';
 export 'src/types/filter_key.dart';
 export 'src/types/filter_type.dart';
+export 'src/types/history_event_type.dart';
 export 'src/types/image_size_banner.dart';
 export 'src/types/image_size_fanart.dart';
 export 'src/types/image_size_poster.dart';

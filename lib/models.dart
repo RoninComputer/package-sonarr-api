@@ -29,6 +29,7 @@ export 'src/models/file_system/file_system.dart';
 export 'src/models/file_system/media_file.dart';
 export 'src/models/file_system/type.dart';
 export 'src/models/filter/filter.dart';
+export 'src/models/history/history.dart';
 export 'src/models/indexer/indexer.dart';
 export 'src/models/indexer/test_result.dart';
 export 'src/models/indexer/validation_failure.dart';

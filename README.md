@@ -13,7 +13,6 @@ This package is intended to supply a 1:1 mapping of the [public API documentatio
 - Cutoff
 - DownloadClient
 - Health
-- History
 - ImportList
 - ImportListExclusion
 - ManualImport

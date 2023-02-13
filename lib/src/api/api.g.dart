@@ -1272,6 +1272,148 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
+  Future<SonarrPagedResult<SonarrHistory>> getHistory({
+    page,
+    pageSize,
+    sortKey,
+    sortDirection,
+    includeSeries = false,
+    includeEpisode = false,
+    eventType,
+    downloadId,
+    episodeId,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': page,
+      r'pageSize': pageSize,
+      r'sortKey': sortKey,
+      r'sortDirection': sortDirection?.toJson(),
+      r'includeSeries': includeSeries,
+      r'includeEpisode': includeEpisode,
+      r'eventType': eventType,
+      r'downloadId': downloadId,
+      r'episodeId': episodeId,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SonarrPagedResult<SonarrHistory>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'history',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SonarrPagedResult<SonarrHistory>.fromJson(
+      _result.data!,
+      (json) => SonarrHistory.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<List<SonarrHistory>> getSeriesHistory({
+    required seriesId,
+    seasonNumber,
+    eventType,
+    includeSeries = false,
+    includeEpisode = false,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'seriesId': seriesId,
+      r'seasonNumber': seasonNumber,
+      r'eventType': eventType?.toJson(),
+      r'includeSeries': includeSeries,
+      r'includeEpisode': includeEpisode,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<List<dynamic>>(_setStreamType<List<SonarrHistory>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'history/series',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => SonarrHistory.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<List<SonarrHistory>> getHistorySince({
+    required date,
+    eventType,
+    includeSeries = false,
+    includeEpisode = false,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'date': date.toJson(),
+      r'eventType': eventType?.toJson(),
+      r'includeSeries': includeSeries,
+      r'includeEpisode': includeEpisode,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<List<dynamic>>(_setStreamType<List<SonarrHistory>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'history/since',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => SonarrHistory.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<void> markHistoryAsFailed({required id}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'history/failed/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    return null;
+  }
+
+  @override
   Future<List<SonarrIndexer>> getIndexers() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
