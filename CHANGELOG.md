@@ -1,3 +1,12 @@
+# 0.0.1-pre.9
+
+- support /customfilter/[id] endpoint
+- support /history/[since|series|failed] endpoint
+- allow passing in BaseOptions Dio client configuration
+- allow passing in CancelToken to all requests
+- fix: handle all formats of C# TimeSpan 'c' format specifier
+- chore: update dependencies
+
 # 0.0.1-pre.8
 
 - support /blocklist/[id|bulk] endpoint

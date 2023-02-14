@@ -80,7 +80,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -678,7 +677,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -848,7 +846,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -1016,7 +1013,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -1264,7 +1260,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -1322,7 +1317,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -1600,7 +1594,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -1740,7 +1733,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -1794,7 +1786,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -1850,7 +1841,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -2046,7 +2036,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -2455,7 +2444,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -2621,7 +2609,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -2733,7 +2720,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -2909,7 +2895,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -3057,7 +3042,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -3140,7 +3124,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -3166,7 +3149,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -3189,7 +3171,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -3212,7 +3193,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
@@ -3402,7 +3382,6 @@ class _SonarrAPI implements SonarrAPI {
           cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   @override
