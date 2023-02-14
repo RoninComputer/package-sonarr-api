@@ -24,6 +24,7 @@ class _SonarrAPI implements SonarrAPI {
     pageSize,
     sortKey,
     sortDirection,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -46,6 +47,7 @@ class _SonarrAPI implements SonarrAPI {
               'blocklist',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrPagedResult<SonarrBlocklist>.fromJson(
@@ -56,9 +58,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteBlocklistItem({required id}) async {
+  Future<void> deleteBlocklistItem({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -71,15 +77,20 @@ class _SonarrAPI implements SonarrAPI {
           'blocklist/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<HttpResponse<void>> deleteBlocklistItems({required options}) async {
+  Future<HttpResponse<void>> deleteBlocklistItems({
+    required options,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(options.toJson());
@@ -94,6 +105,7 @@ class _SonarrAPI implements SonarrAPI {
               'blocklist/bulk',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final httpResponse = HttpResponse(null, _result);
@@ -108,6 +120,7 @@ class _SonarrAPI implements SonarrAPI {
     includeEpisodeImages,
     endDate,
     startDate,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -132,6 +145,7 @@ class _SonarrAPI implements SonarrAPI {
               'calendar',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -141,9 +155,11 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrDownloadClientConfig> getDownloadClientConfig() async {
+  Future<SonarrDownloadClientConfig> getDownloadClientConfig(
+      {cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -157,6 +173,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/downloadclient',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrDownloadClientConfig.fromJson(_result.data!);
@@ -164,10 +181,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrDownloadClientConfig> updateDownloadClientConfig(
-      {required config}) async {
+  Future<SonarrDownloadClientConfig> updateDownloadClientConfig({
+    required config,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(config.toJson());
@@ -182,6 +202,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/downloadclient',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrDownloadClientConfig.fromJson(_result.data!);
@@ -189,9 +210,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrHostConfig> getHostConfig() async {
+  Future<SonarrHostConfig> getHostConfig({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -205,6 +227,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/host',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrHostConfig.fromJson(_result.data!);
@@ -212,9 +235,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrHostConfig> updateHostConfig({required config}) async {
+  Future<SonarrHostConfig> updateHostConfig({
+    required config,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(config.toJson());
@@ -229,6 +256,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/host',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrHostConfig.fromJson(_result.data!);
@@ -236,9 +264,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrIndexerConfig> getIndexerConfig() async {
+  Future<SonarrIndexerConfig> getIndexerConfig({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -252,6 +281,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/indexer',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrIndexerConfig.fromJson(_result.data!);
@@ -259,9 +289,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrIndexerConfig> updateIndexerConfig({required config}) async {
+  Future<SonarrIndexerConfig> updateIndexerConfig({
+    required config,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(config.toJson());
@@ -276,6 +310,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/indexer',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrIndexerConfig.fromJson(_result.data!);
@@ -283,9 +318,11 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrMediaManagementConfig> getMediaManagementConfig() async {
+  Future<SonarrMediaManagementConfig> getMediaManagementConfig(
+      {cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -299,6 +336,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/mediamanagement',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrMediaManagementConfig.fromJson(_result.data!);
@@ -306,10 +344,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrMediaManagementConfig> updateMediaManagementConfig(
-      {required config}) async {
+  Future<SonarrMediaManagementConfig> updateMediaManagementConfig({
+    required config,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(config.toJson());
@@ -324,6 +365,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/mediamanagement',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrMediaManagementConfig.fromJson(_result.data!);
@@ -331,9 +373,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrNamingConfig> getNamingConfig() async {
+  Future<SonarrNamingConfig> getNamingConfig({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -347,6 +390,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/naming',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrNamingConfig.fromJson(_result.data!);
@@ -354,9 +398,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrNamingConfig> updateNamingConfig({required config}) async {
+  Future<SonarrNamingConfig> updateNamingConfig({
+    required config,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(config.toJson());
@@ -371,6 +419,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/naming',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrNamingConfig.fromJson(_result.data!);
@@ -395,6 +444,7 @@ class _SonarrAPI implements SonarrAPI {
     separator,
     numberStyle,
     id,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -429,6 +479,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/naming/examples',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrNamingConfigExamples.fromJson(_result.data!);
@@ -436,9 +487,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrUiConfig> getUiConfig() async {
+  Future<SonarrUiConfig> getUiConfig({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -452,6 +504,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/ui',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrUiConfig.fromJson(_result.data!);
@@ -459,9 +512,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrUiConfig> updateUiConfig({required config}) async {
+  Future<SonarrUiConfig> updateUiConfig({
+    required config,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(config.toJson());
@@ -476,6 +533,7 @@ class _SonarrAPI implements SonarrAPI {
               'config/ui',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrUiConfig.fromJson(_result.data!);
@@ -483,9 +541,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrCustomFilter>> getCustomFilters() async {
+  Future<List<SonarrCustomFilter>> getCustomFilters({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -499,6 +558,7 @@ class _SonarrAPI implements SonarrAPI {
               'customfilter',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -509,9 +569,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrCustomFilter> createCustomFilter({required filter}) async {
+  Future<SonarrCustomFilter> createCustomFilter({
+    required filter,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(filter.toJson());
@@ -526,6 +590,7 @@ class _SonarrAPI implements SonarrAPI {
               'customfilter',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrCustomFilter.fromJson(_result.data!);
@@ -533,9 +598,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrCustomFilter> getCustomFilter({required id}) async {
+  Future<SonarrCustomFilter> getCustomFilter({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -549,6 +618,7 @@ class _SonarrAPI implements SonarrAPI {
               'customfilter/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrCustomFilter.fromJson(_result.data!);
@@ -559,9 +629,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<SonarrCustomFilter> updateCustomFilter({
     required id,
     required filter,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(filter.toJson());
@@ -576,6 +648,7 @@ class _SonarrAPI implements SonarrAPI {
               'customfilter/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrCustomFilter.fromJson(_result.data!);
@@ -583,9 +656,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteCustomFilter({required id}) async {
+  Future<void> deleteCustomFilter({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -598,15 +675,17 @@ class _SonarrAPI implements SonarrAPI {
           'customfilter/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<List<SonarrCustomFormat>> getCustomFormats() async {
+  Future<List<SonarrCustomFormat>> getCustomFormats({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -620,6 +699,7 @@ class _SonarrAPI implements SonarrAPI {
               'customformat',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -630,9 +710,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrCustomFormat> createCustomFormat({required format}) async {
+  Future<SonarrCustomFormat> createCustomFormat({
+    required format,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(format.toJson());
@@ -647,6 +731,7 @@ class _SonarrAPI implements SonarrAPI {
               'customformat',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrCustomFormat.fromJson(_result.data!);
@@ -654,9 +739,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrCustomFormat> getCustomFormat({required id}) async {
+  Future<SonarrCustomFormat> getCustomFormat({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -670,6 +759,7 @@ class _SonarrAPI implements SonarrAPI {
               'customformat/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrCustomFormat.fromJson(_result.data!);
@@ -680,9 +770,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<SonarrCustomFormat> updateCustomFormat({
     required id,
     required format,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(format.toJson());
@@ -697,6 +789,7 @@ class _SonarrAPI implements SonarrAPI {
               'customformat/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrCustomFormat.fromJson(_result.data!);
@@ -704,9 +797,11 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrCustomFormatSchema>> getCustomFormatSchemas() async {
+  Future<List<SonarrCustomFormatSchema>> getCustomFormatSchemas(
+      {cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
@@ -720,6 +815,7 @@ class _SonarrAPI implements SonarrAPI {
               'customformat/schema',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -730,9 +826,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteCustomFormat({required id}) async {
+  Future<void> deleteCustomFormat({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -745,15 +845,17 @@ class _SonarrAPI implements SonarrAPI {
           'customformat/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<List<SonarrDiskSpace>> getDiskSpace() async {
+  Future<List<SonarrDiskSpace>> getDiskSpace({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -767,6 +869,7 @@ class _SonarrAPI implements SonarrAPI {
               'diskspace',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -776,9 +879,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrDelayProfile>> getDelayProfiles() async {
+  Future<List<SonarrDelayProfile>> getDelayProfiles({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -792,6 +896,7 @@ class _SonarrAPI implements SonarrAPI {
               'delayprofile',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -802,9 +907,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrDelayProfile> createDelayProfile({required profile}) async {
+  Future<SonarrDelayProfile> createDelayProfile({
+    required profile,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(profile.toJson());
@@ -819,6 +928,7 @@ class _SonarrAPI implements SonarrAPI {
               'delayprofile',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrDelayProfile.fromJson(_result.data!);
@@ -826,9 +936,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrDelayProfile> getDelayProfile({required id}) async {
+  Future<SonarrDelayProfile> getDelayProfile({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -842,6 +956,7 @@ class _SonarrAPI implements SonarrAPI {
               'delayprofile/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrDelayProfile.fromJson(_result.data!);
@@ -852,9 +967,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<SonarrDelayProfile> updateDelayProfile({
     required id,
     required profile,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(profile.toJson());
@@ -869,6 +986,7 @@ class _SonarrAPI implements SonarrAPI {
               'delayprofile/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrDelayProfile.fromJson(_result.data!);
@@ -876,9 +994,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteDelayProfile({required id}) async {
+  Future<void> deleteDelayProfile({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -891,6 +1013,7 @@ class _SonarrAPI implements SonarrAPI {
           'delayprofile/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
@@ -903,6 +1026,7 @@ class _SonarrAPI implements SonarrAPI {
     episodeIds,
     episodeFileId,
     includeImages = false,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -926,6 +1050,7 @@ class _SonarrAPI implements SonarrAPI {
               'episode',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -935,9 +1060,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrEpisode> getEpisode({required id}) async {
+  Future<SonarrEpisode> getEpisode({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -951,6 +1080,7 @@ class _SonarrAPI implements SonarrAPI {
               'episode/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrEpisode.fromJson(_result.data!);
@@ -961,9 +1091,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<SonarrEpisode> updateEpisode({
     required id,
     required episode,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(episode.toJson());
@@ -978,6 +1110,7 @@ class _SonarrAPI implements SonarrAPI {
               'episode/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrEpisode.fromJson(_result.data!);
@@ -985,9 +1118,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrEpisode>> updateEpisodes({required options}) async {
+  Future<List<SonarrEpisode>> updateEpisodes({
+    required options,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(options.toJson());
@@ -1002,6 +1139,7 @@ class _SonarrAPI implements SonarrAPI {
               'episode/monitor',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1014,6 +1152,7 @@ class _SonarrAPI implements SonarrAPI {
   Future<List<SonarrEpisodeFile>> getEpisodeFiles({
     seriesId,
     episodeFileIds,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1034,6 +1173,7 @@ class _SonarrAPI implements SonarrAPI {
               'episodefile',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1044,9 +1184,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrEpisodeFile> getEpisodeFile({required id}) async {
+  Future<SonarrEpisodeFile> getEpisodeFile({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -1060,6 +1204,7 @@ class _SonarrAPI implements SonarrAPI {
               'episodefile/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrEpisodeFile.fromJson(_result.data!);
@@ -1070,9 +1215,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<SonarrEpisodeFile> updateEpisodeFile({
     required id,
     required file,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(file.toJson());
@@ -1087,6 +1234,7 @@ class _SonarrAPI implements SonarrAPI {
               'episodefile/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrEpisodeFile.fromJson(_result.data!);
@@ -1094,9 +1242,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteEpisodeFile({required id}) async {
+  Future<void> deleteEpisodeFile({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -1109,15 +1261,20 @@ class _SonarrAPI implements SonarrAPI {
           'episodefile/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<List<SonarrEpisodeFile>> updateEpisodeFiles({required files}) async {
+  Future<List<SonarrEpisodeFile>> updateEpisodeFiles({
+    required files,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = files.map((e) => e.toJson()).toList();
     final _result = await _dio
@@ -1131,6 +1288,7 @@ class _SonarrAPI implements SonarrAPI {
               'episodefile/bulk',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1141,9 +1299,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteEpisodeFiles({required options}) async {
+  Future<void> deleteEpisodeFiles({
+    required options,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(options.toJson());
@@ -1157,15 +1319,20 @@ class _SonarrAPI implements SonarrAPI {
           'episodefile/bulk',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<List<SonarrEpisodeFile>> editEpisodeFiles({required options}) async {
+  Future<List<SonarrEpisodeFile>> editEpisodeFiles({
+    required options,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(options.toJson());
@@ -1180,6 +1347,7 @@ class _SonarrAPI implements SonarrAPI {
               'episodefile/editor',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1194,6 +1362,7 @@ class _SonarrAPI implements SonarrAPI {
     path,
     includeFiles,
     allowFoldersWithoutTrailingSlashes,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1215,6 +1384,7 @@ class _SonarrAPI implements SonarrAPI {
               'filesystem',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrFileSystem.fromJson(_result.data!);
@@ -1222,10 +1392,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrFileSystemMediaFile>> getFileSystemMediaFiles(
-      {required path}) async {
+  Future<List<SonarrFileSystemMediaFile>> getFileSystemMediaFiles({
+    required path,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'path': path};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
@@ -1239,6 +1412,7 @@ class _SonarrAPI implements SonarrAPI {
               'filesystem/mediafiles',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1249,9 +1423,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrFileSystemType> getFileSystemType({required path}) async {
+  Future<SonarrFileSystemType> getFileSystemType({
+    required path,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'path': path};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -1265,6 +1443,7 @@ class _SonarrAPI implements SonarrAPI {
               'filesystem/type',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrFileSystemType.fromJson(_result.data!);
@@ -1282,6 +1461,7 @@ class _SonarrAPI implements SonarrAPI {
     eventType,
     downloadId,
     episodeId,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1309,6 +1489,7 @@ class _SonarrAPI implements SonarrAPI {
               'history',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrPagedResult<SonarrHistory>.fromJson(
@@ -1325,6 +1506,7 @@ class _SonarrAPI implements SonarrAPI {
     eventType,
     includeSeries = false,
     includeEpisode = false,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1348,6 +1530,7 @@ class _SonarrAPI implements SonarrAPI {
               'history/series',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1362,6 +1545,7 @@ class _SonarrAPI implements SonarrAPI {
     eventType,
     includeSeries = false,
     includeEpisode = false,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1384,6 +1568,7 @@ class _SonarrAPI implements SonarrAPI {
               'history/since',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1393,9 +1578,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> markHistoryAsFailed({required id}) async {
+  Future<void> markHistoryAsFailed({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -1408,15 +1597,17 @@ class _SonarrAPI implements SonarrAPI {
           'history/failed/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<List<SonarrIndexer>> getIndexers() async {
+  Future<List<SonarrIndexer>> getIndexers({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -1430,6 +1621,7 @@ class _SonarrAPI implements SonarrAPI {
               'indexer',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1439,9 +1631,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrIndexer> createIndexer({required indexer}) async {
+  Future<SonarrIndexer> createIndexer({
+    required indexer,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(indexer.toJson());
@@ -1456,6 +1652,7 @@ class _SonarrAPI implements SonarrAPI {
               'indexer',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrIndexer.fromJson(_result.data!);
@@ -1463,9 +1660,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrIndexer> getIndexer({required id}) async {
+  Future<SonarrIndexer> getIndexer({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -1479,6 +1680,7 @@ class _SonarrAPI implements SonarrAPI {
               'indexer/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrIndexer.fromJson(_result.data!);
@@ -1489,9 +1691,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<SonarrIndexer> updateIndexer({
     required id,
     required indexer,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(indexer.toJson());
@@ -1506,6 +1710,7 @@ class _SonarrAPI implements SonarrAPI {
               'indexer/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrIndexer.fromJson(_result.data!);
@@ -1513,9 +1718,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteIndexer({required id}) async {
+  Future<void> deleteIndexer({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -1528,15 +1737,17 @@ class _SonarrAPI implements SonarrAPI {
           'indexer/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<List<SonarrIndexer>> getIndexerSchemas() async {
+  Future<List<SonarrIndexer>> getIndexerSchemas({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -1550,6 +1761,7 @@ class _SonarrAPI implements SonarrAPI {
               'indexer/schema',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1559,9 +1771,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> testIndexer({required indexer}) async {
+  Future<void> testIndexer({
+    required indexer,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(indexer.toJson());
@@ -1575,15 +1791,17 @@ class _SonarrAPI implements SonarrAPI {
           'indexer/test',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<List<SonarrIndexerTestResult>> testAllIndexers() async {
+  Future<List<SonarrIndexerTestResult>> testAllIndexers({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
@@ -1597,6 +1815,7 @@ class _SonarrAPI implements SonarrAPI {
               'indexer/testall',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1610,9 +1829,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<void> triggerIndexerAction({
     required action,
     required indexer,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(indexer.toJson());
@@ -1626,15 +1847,17 @@ class _SonarrAPI implements SonarrAPI {
           'indexer/action/${action}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<List<SonarrLanguage>> getLanguages() async {
+  Future<List<SonarrLanguage>> getLanguages({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -1648,6 +1871,7 @@ class _SonarrAPI implements SonarrAPI {
               'language',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1657,9 +1881,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrLanguage> getLanguage({required id}) async {
+  Future<SonarrLanguage> getLanguage({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -1673,6 +1901,7 @@ class _SonarrAPI implements SonarrAPI {
               'language/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrLanguage.fromJson(_result.data!);
@@ -1680,9 +1909,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrLanguageProfile>> getLanguageProfiles() async {
+  Future<List<SonarrLanguageProfile>> getLanguageProfiles({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
@@ -1696,6 +1926,7 @@ class _SonarrAPI implements SonarrAPI {
               'languageprofile',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1706,10 +1937,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrLanguageProfile> createLanguageProfile(
-      {required profile}) async {
+  Future<SonarrLanguageProfile> createLanguageProfile({
+    required profile,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(profile.toJson());
@@ -1724,6 +1958,7 @@ class _SonarrAPI implements SonarrAPI {
               'languageprofile',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrLanguageProfile.fromJson(_result.data!);
@@ -1731,9 +1966,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrLanguageProfile> getLanguageProfile({required id}) async {
+  Future<SonarrLanguageProfile> getLanguageProfile({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -1747,6 +1986,7 @@ class _SonarrAPI implements SonarrAPI {
               'languageprofile/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrLanguageProfile.fromJson(_result.data!);
@@ -1757,9 +1997,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<SonarrLanguageProfile> updateLanguageProfile({
     required id,
     required profile,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(profile.toJson());
@@ -1774,6 +2016,7 @@ class _SonarrAPI implements SonarrAPI {
               'languageprofile/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrLanguageProfile.fromJson(_result.data!);
@@ -1781,9 +2024,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteLanguageProfile({required id}) async {
+  Future<void> deleteLanguageProfile({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -1796,15 +2043,17 @@ class _SonarrAPI implements SonarrAPI {
           'languageprofile/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<SonarrLanguageProfile> getLanguageProfileSchema() async {
+  Future<SonarrLanguageProfile> getLanguageProfileSchema({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -1818,6 +2067,7 @@ class _SonarrAPI implements SonarrAPI {
               'languageprofile/schema',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrLanguageProfile.fromJson(_result.data!);
@@ -1831,6 +2081,7 @@ class _SonarrAPI implements SonarrAPI {
     sortKey,
     sortDirection,
     level,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1854,6 +2105,7 @@ class _SonarrAPI implements SonarrAPI {
               'log',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrPagedResult<SonarrLog>.fromJson(
@@ -1864,9 +2116,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrLogFile>> getLogFiles() async {
+  Future<List<SonarrLogFile>> getLogFiles({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -1880,6 +2133,7 @@ class _SonarrAPI implements SonarrAPI {
               'log/file',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1889,9 +2143,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<int>> getLogFileData({required name}) async {
+  Future<List<int>> getLogFileData({
+    required name,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result =
@@ -1906,6 +2164,7 @@ class _SonarrAPI implements SonarrAPI {
               'log/file/${name}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data!.cast<int>();
@@ -1913,9 +2172,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrLogFile>> getUpdateLogFiles() async {
+  Future<List<SonarrLogFile>> getUpdateLogFiles({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -1929,6 +2189,7 @@ class _SonarrAPI implements SonarrAPI {
               'log/file/update',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -1938,9 +2199,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<int>> getUpdateLogFileData({required name}) async {
+  Future<List<int>> getUpdateLogFileData({
+    required name,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result =
@@ -1955,6 +2220,7 @@ class _SonarrAPI implements SonarrAPI {
               'log/file/update/${name}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data!.cast<int>();
@@ -1965,9 +2231,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<List<int>> getBannerImage({
     required seriesId,
     required size,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result =
@@ -1982,6 +2250,7 @@ class _SonarrAPI implements SonarrAPI {
               'mediacover/${seriesId}/banner${size.name}.jpg',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data!.cast<int>();
@@ -1992,9 +2261,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<List<int>> getFanartImage({
     required seriesId,
     required size,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result =
@@ -2009,6 +2280,7 @@ class _SonarrAPI implements SonarrAPI {
               'mediacover/${seriesId}/fanart${size.name}.jpg',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data!.cast<int>();
@@ -2019,9 +2291,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<List<int>> getPosterImage({
     required seriesId,
     required size,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result =
@@ -2036,6 +2310,7 @@ class _SonarrAPI implements SonarrAPI {
               'mediacover/${seriesId}/poster${size.name}.jpg',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data!.cast<int>();
@@ -2043,9 +2318,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrQualityProfile>> getQualityProfiles() async {
+  Future<List<SonarrQualityProfile>> getQualityProfiles({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
@@ -2059,6 +2335,7 @@ class _SonarrAPI implements SonarrAPI {
               'qualityprofile',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -2069,9 +2346,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrQualityProfile> createQualityProfile({required profile}) async {
+  Future<SonarrQualityProfile> createQualityProfile({
+    required profile,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(profile.toJson());
@@ -2086,6 +2367,7 @@ class _SonarrAPI implements SonarrAPI {
               'qualityprofile',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrQualityProfile.fromJson(_result.data!);
@@ -2093,9 +2375,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrQualityProfile> getQualityProfile({required id}) async {
+  Future<SonarrQualityProfile> getQualityProfile({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -2109,6 +2395,7 @@ class _SonarrAPI implements SonarrAPI {
               'qualityprofile/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrQualityProfile.fromJson(_result.data!);
@@ -2119,9 +2406,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<SonarrQualityProfile> updateQualityProfile({
     required id,
     required profile,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(profile.toJson());
@@ -2136,6 +2425,7 @@ class _SonarrAPI implements SonarrAPI {
               'qualityprofile/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrQualityProfile.fromJson(_result.data!);
@@ -2143,9 +2433,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteQualityProfile({required id}) async {
+  Future<void> deleteQualityProfile({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -2158,15 +2452,17 @@ class _SonarrAPI implements SonarrAPI {
           'qualityprofile/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<SonarrQualityProfile> getQualityProfileSchema() async {
+  Future<SonarrQualityProfile> getQualityProfileSchema({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -2180,6 +2476,7 @@ class _SonarrAPI implements SonarrAPI {
               'qualityprofile/schema',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrQualityProfile.fromJson(_result.data!);
@@ -2187,9 +2484,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrReleaseProfile>> getReleaseProfiles() async {
+  Future<List<SonarrReleaseProfile>> getReleaseProfiles({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
@@ -2203,6 +2501,7 @@ class _SonarrAPI implements SonarrAPI {
               'releaseprofile',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -2213,9 +2512,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrReleaseProfile> createReleaseProfile({required profile}) async {
+  Future<SonarrReleaseProfile> createReleaseProfile({
+    required profile,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(profile.toJson());
@@ -2230,6 +2533,7 @@ class _SonarrAPI implements SonarrAPI {
               'releaseprofile',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrReleaseProfile.fromJson(_result.data!);
@@ -2237,9 +2541,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrReleaseProfile> getReleaseProfile({required id}) async {
+  Future<SonarrReleaseProfile> getReleaseProfile({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -2253,6 +2561,7 @@ class _SonarrAPI implements SonarrAPI {
               'releaseprofile/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrReleaseProfile.fromJson(_result.data!);
@@ -2263,9 +2572,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<SonarrReleaseProfile> updateReleaseProfile({
     required id,
     required profile,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(profile.toJson());
@@ -2280,6 +2591,7 @@ class _SonarrAPI implements SonarrAPI {
               'releaseprofile/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrReleaseProfile.fromJson(_result.data!);
@@ -2287,9 +2599,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteReleaseProfile({required id}) async {
+  Future<void> deleteReleaseProfile({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -2302,15 +2618,18 @@ class _SonarrAPI implements SonarrAPI {
           'releaseprofile/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<List<SonarrRemotePathMapping>> getRemotePathMappings() async {
+  Future<List<SonarrRemotePathMapping>> getRemotePathMappings(
+      {cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
@@ -2324,6 +2643,7 @@ class _SonarrAPI implements SonarrAPI {
               'remotepathmapping',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -2334,10 +2654,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrRemotePathMapping> createRemotePathMapping(
-      {required mapping}) async {
+  Future<SonarrRemotePathMapping> createRemotePathMapping({
+    required mapping,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(mapping.toJson());
@@ -2352,6 +2675,7 @@ class _SonarrAPI implements SonarrAPI {
               'remotepathmapping',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrRemotePathMapping.fromJson(_result.data!);
@@ -2359,9 +2683,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrRemotePathMapping> getRemotePathMapping({required id}) async {
+  Future<SonarrRemotePathMapping> getRemotePathMapping({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -2375,6 +2703,7 @@ class _SonarrAPI implements SonarrAPI {
               'remotepathmapping/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrRemotePathMapping.fromJson(_result.data!);
@@ -2382,9 +2711,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteRemotePathMapping({required id}) async {
+  Future<void> deleteRemotePathMapping({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -2397,6 +2730,7 @@ class _SonarrAPI implements SonarrAPI {
           'remotepathmapping/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
@@ -2406,9 +2740,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<SonarrRemotePathMapping> updateRemotePathMapping({
     required id,
     required mapping,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(mapping.toJson());
@@ -2423,6 +2759,7 @@ class _SonarrAPI implements SonarrAPI {
               'remotepathmapping/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrRemotePathMapping.fromJson(_result.data!);
@@ -2433,6 +2770,7 @@ class _SonarrAPI implements SonarrAPI {
   Future<List<SonarrEpisodeRenamePreview>> getEpisodeRenamePreview({
     required seriesId,
     seasonNumber,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -2453,6 +2791,7 @@ class _SonarrAPI implements SonarrAPI {
               'rename',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -2463,9 +2802,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrRootFolder>> getRootFolders() async {
+  Future<List<SonarrRootFolder>> getRootFolders({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -2479,6 +2819,7 @@ class _SonarrAPI implements SonarrAPI {
               'rootfolder',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -2489,9 +2830,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrRootFolder> createRootFolder({required rootFolder}) async {
+  Future<SonarrRootFolder> createRootFolder({
+    required rootFolder,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(rootFolder.toJson());
@@ -2506,6 +2851,7 @@ class _SonarrAPI implements SonarrAPI {
               'rootfolder',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrRootFolder.fromJson(_result.data!);
@@ -2513,9 +2859,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrRootFolder> getRootFolder({required id}) async {
+  Future<SonarrRootFolder> getRootFolder({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -2529,6 +2879,7 @@ class _SonarrAPI implements SonarrAPI {
               'rootfolder/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrRootFolder.fromJson(_result.data!);
@@ -2536,9 +2887,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteRootFolder({required id}) async {
+  Future<void> deleteRootFolder({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -2551,13 +2906,17 @@ class _SonarrAPI implements SonarrAPI {
           'rootfolder/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<List<SonarrSeries>> getAllSeries({tmdbId}) async {
+  Future<List<SonarrSeries>> getAllSeries({
+    tmdbId,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'tmdbId': tmdbId};
     queryParameters.removeWhere((k, v) => v == null);
@@ -2574,6 +2933,7 @@ class _SonarrAPI implements SonarrAPI {
               'series',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -2583,9 +2943,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrSeries> createSeries({required series}) async {
+  Future<SonarrSeries> createSeries({
+    required series,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(series.toJson());
@@ -2600,6 +2964,7 @@ class _SonarrAPI implements SonarrAPI {
               'series',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrSeries.fromJson(_result.data!);
@@ -2607,9 +2972,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrSeries> getSeries({required id}) async {
+  Future<SonarrSeries> getSeries({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -2623,6 +2992,7 @@ class _SonarrAPI implements SonarrAPI {
               'series/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrSeries.fromJson(_result.data!);
@@ -2633,9 +3003,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<SonarrSeries> updateSeries({
     required id,
     required series,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(series.toJson());
@@ -2650,6 +3022,7 @@ class _SonarrAPI implements SonarrAPI {
               'series/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrSeries.fromJson(_result.data!);
@@ -2661,6 +3034,7 @@ class _SonarrAPI implements SonarrAPI {
     required id,
     deleteFiles,
     addImportListExclusion,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -2680,15 +3054,20 @@ class _SonarrAPI implements SonarrAPI {
           'series/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<List<SonarrSeries>> lookupSeries({required term}) async {
+  Future<List<SonarrSeries>> lookupSeries({
+    required term,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'term': term};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -2702,6 +3081,7 @@ class _SonarrAPI implements SonarrAPI {
               'series/lookup',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -2711,9 +3091,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrBackup>> getBackups() async {
+  Future<List<SonarrBackup>> getBackups({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -2727,6 +3108,7 @@ class _SonarrAPI implements SonarrAPI {
               'system/backup',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -2736,9 +3118,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteBackup({required id}) async {
+  Future<void> deleteBackup({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -2751,15 +3137,20 @@ class _SonarrAPI implements SonarrAPI {
           'system/backup/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<void> restoreBackup({required id}) async {
+  Future<void> restoreBackup({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -2772,15 +3163,17 @@ class _SonarrAPI implements SonarrAPI {
           'system/backup/restore/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<void> restartInstance() async {
+  Future<void> restartInstance({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -2793,15 +3186,17 @@ class _SonarrAPI implements SonarrAPI {
           'system/restart',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<void> shutdownInstance() async {
+  Future<void> shutdownInstance({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -2814,15 +3209,17 @@ class _SonarrAPI implements SonarrAPI {
           'system/shutdown',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
   }
 
   @override
-  Future<SonarrSystemStatus> getSystemStatus() async {
+  Future<SonarrSystemStatus> getSystemStatus({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -2836,6 +3233,7 @@ class _SonarrAPI implements SonarrAPI {
               'system/status',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrSystemStatus.fromJson(_result.data!);
@@ -2843,9 +3241,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrTask>> getTasks() async {
+  Future<List<SonarrTask>> getTasks({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -2859,6 +3258,7 @@ class _SonarrAPI implements SonarrAPI {
               'system/task',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -2868,9 +3268,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrTask> getTask({required id}) async {
+  Future<SonarrTask> getTask({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -2884,6 +3288,7 @@ class _SonarrAPI implements SonarrAPI {
               'system/task/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrTask.fromJson(_result.data!);
@@ -2891,9 +3296,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrTag>> getTags() async {
+  Future<List<SonarrTag>> getTags({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result =
@@ -2907,6 +3313,7 @@ class _SonarrAPI implements SonarrAPI {
               'tag',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -2916,9 +3323,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrTag> createTag({required tag}) async {
+  Future<SonarrTag> createTag({
+    required tag,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(tag.toJson());
@@ -2933,6 +3344,7 @@ class _SonarrAPI implements SonarrAPI {
               'tag',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrTag.fromJson(_result.data!);
@@ -2940,9 +3352,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrTag> getTag({required id}) async {
+  Future<SonarrTag> getTag({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -2956,6 +3372,7 @@ class _SonarrAPI implements SonarrAPI {
               'tag/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrTag.fromJson(_result.data!);
@@ -2963,9 +3380,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<void> deleteTag({required id}) async {
+  Future<void> deleteTag({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -2978,6 +3399,7 @@ class _SonarrAPI implements SonarrAPI {
           'tag/${id}',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     return null;
@@ -2987,9 +3409,11 @@ class _SonarrAPI implements SonarrAPI {
   Future<SonarrTag> updateTag({
     required id,
     required tag,
+    cancelToken,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(tag.toJson());
@@ -3004,6 +3428,7 @@ class _SonarrAPI implements SonarrAPI {
               'tag/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrTag.fromJson(_result.data!);
@@ -3011,9 +3436,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrTagDetails>> getTagsDetails() async {
+  Future<List<SonarrTagDetails>> getTagsDetails({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -3027,6 +3453,7 @@ class _SonarrAPI implements SonarrAPI {
               'tag/detail',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -3037,9 +3464,13 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<SonarrTagDetails> getTagDetails({required id}) async {
+  Future<SonarrTagDetails> getTagDetails({
+    required id,
+    cancelToken,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -3053,6 +3484,7 @@ class _SonarrAPI implements SonarrAPI {
               'tag/detail/${id}',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SonarrTagDetails.fromJson(_result.data!);
@@ -3060,9 +3492,10 @@ class _SonarrAPI implements SonarrAPI {
   }
 
   @override
-  Future<List<SonarrUpdate>> getUpdates() async {
+  Future<List<SonarrUpdate>> getUpdates({cancelToken}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -3076,6 +3509,7 @@ class _SonarrAPI implements SonarrAPI {
               'update',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
