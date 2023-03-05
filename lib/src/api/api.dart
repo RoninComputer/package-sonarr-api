@@ -906,11 +906,35 @@ abstract class SonarrAPI {
     @CancelRequest() CancelToken? cancelToken,
   });
 
+  /// Get a list of cutoff unmet episodes.
+  @GET('wanted/cutoff')
+  Future<SonarrPagedResult<SonarrEpisode>> getCutoffUnmetEpisodes({
+    @Query('page') int? page,
+    @Query('pageSize') int? pageSize,
+    @Query('sortKey') String? sortKey,
+    @Query('sortDirection') SonarrSortDirection? sortDirection,
+    @Query('includeEpisodeFile') bool includeEpisodeFile = false,
+    @Query('includeImages') bool includeImages = false,
+    @Query('includeSeries') bool includeSeries = false,
+    @CancelRequest() CancelToken? cancelToken,
+  });
+
+  /// Get a cutoff unmet episode by ID.
+  @GET('wanted/cutoff/{id}')
+  Future<SonarrEpisode> getCutoffUnmetEpisode({
+    @Path('id') required int id,
+    @CancelRequest() CancelToken? cancelToken,
+  });
+
   /// Get a list of missing episodes
   @GET('wanted/missing')
   Future<SonarrPagedResult<SonarrEpisode>> getMissingEpisodes({
-    @Query('includeSeries') bool includeSeries = false,
+    @Query('page') int? page,
+    @Query('pageSize') int? pageSize,
+    @Query('sortKey') String? sortKey,
+    @Query('sortDirection') SonarrSortDirection? sortDirection,
     @Query('includeImages') bool includeImages = false,
+    @Query('includeSeries') bool includeSeries = false,
     @CancelRequest() CancelToken? cancelToken,
   });
 
