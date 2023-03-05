@@ -905,4 +905,19 @@ abstract class SonarrAPI {
   Future<List<SonarrUpdate>> getUpdates({
     @CancelRequest() CancelToken? cancelToken,
   });
+
+  /// Get a list of missing episodes
+  @GET('wanted/missing')
+  Future<SonarrPagedResult<SonarrEpisode>> getMissingEpisodes({
+    @Query('includeSeries') bool includeSeries = false,
+    @Query('includeImages') bool includeImages = false,
+    @CancelRequest() CancelToken? cancelToken,
+  });
+
+  /// Get a missing episode by ID.
+  @GET('wanted/missing/{id}')
+  Future<SonarrEpisode> getMissingEpisode({
+    @Path('id') required int id,
+    @CancelRequest() CancelToken? cancelToken,
+  });
 }
